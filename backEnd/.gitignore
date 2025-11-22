@@ -1,0 +1,13 @@
+# --- Dependency Directories ---
+node_modules/
+# --- Environment Files ---
+.env
+temp
+tmp
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

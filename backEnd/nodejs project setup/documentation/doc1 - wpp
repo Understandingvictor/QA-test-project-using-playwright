@@ -1,0 +1,17 @@
+🔍 What is happening here?
+
+await wppconnect.create()	            Creates a session and returns the client instance
+catchLinkCode	                        Called when WhatsApp sends a login code to the phone
+start(client)	                          Your function where you begin sending messages, getting groups, contacts, etc.
+
+
+
+⚠ Why it took long
+
+WPPConnect tries to download Chromium (same as Puppeteer).
+This file is 100MB+ so on slow network it takes time.
+
+If you want to skip this (for development on Windows), run:
+
+set PUPPETEER_SKIP_DOWNLOAD=true
+npm i @wppconnect-team/wppconnect

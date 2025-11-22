@@ -1,0 +1,243 @@
+⚙️ Before you start — enable ES Modules
+
+Open your package.json and add:
+
+{
+  "type": "module"
+}
+
+
+This allows you to use:
+
+import express from "express";
+
+
+
+
+🔥 1. MODEL (models/userModel.js)
+
+import mongoose from "mongoose";
+
+const userSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true }
+  },
+  { timestamps: true }
+);
+
+export default mongoose.model("User", userSchema);
+
+
+
+
+
+🔥 2. CONTROLLER (controllers/userController.js)
+import User from "../models/userModel.js";
+
+// GET all users
+export const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// CREATE user
+export const createUser = async (req, res) => {
+  try {
+    const { name, email } = req.body;
+
+    const newUser = await User.create({ name, email });
+    res.status(201).json(newUser);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+
+
+
+
+
+🔥 3. ROUTES (routes/userRoutes.js)
+
+import express from "express";
+import { getUsers, createUser } from "../controllers/userController.js";
+
+const router = express.Router();
+
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: User management
+ */
+
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     summary: Get all users
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: List of users
+ */
+router.get("/", getUsers);
+
+/**
+ * @swagger
+ * /api/users:
+ *   post:
+ *     summary: Create a new user
+ *     tags: [Users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - name
+ *               - email
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: User created successfully
+ */
+router.post("/", createUser);
+
+export default router;
+
+
+
+
+
+
+🔥 4. SWAGGER SETUP (swagger/swagger.js)
+
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "My API Documentation",
+      version: "1.0.0",
+      description: "API documentation for my backend"
+    },
+    servers: [
+      {
+        url: "http://localhost:3000"
+      }
+    ]
+  },
+  apis: ["./routes/*.js"]
+};
+
+const swaggerSpec = swaggerJsdoc(options);
+
+export function swaggerDocs(app, port) {
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  console.log(`📘 Swagger Docs running at http://localhost:${port}/api-docs`);
+}
+
+
+
+
+
+🔥 5. DATABASE CONNECTION (config/db.js)
+import mongoose from "mongoose";
+
+export const connectDB = async () => {
+  try {
+    await mongoose.connect("mongodb://localhost:27017/myapp");
+    console.log("MongoDB Connected ✔");
+  } catch (err) {
+    console.error("DB Connection Failed ❌", err);
+    process.exit(1);
+  }
+};
+
+
+
+
+
+
+🔥 6. MAIN SERVER FILE (index.js)
+import express from "express";
+import { connectDB } from "./config/db.js";
+import userRoutes from "./routes/userRoutes.js";
+import { swaggerDocs } from "./swagger/swagger.js";
+
+const app = express();
+const port = 3000;
+
+// Connect to DB
+connectDB();
+
+// Middlewares
+app.use(express.json());
+
+// Routes
+app.use("/api/users", userRoutes);
+
+// Swagger Docs
+swaggerDocs(app, port);
+
+app.listen(port, () => console.log(`Server running on port ${port}`));
+
+
+
+
+
+
+
+🚀 RUN PROJECT
+
+Install dependencies:
+
+npm install express mongoose swagger-ui-express swagger-jsdoc
+
+
+
+
+
+
+Start server:
+
+node index.js
+
+
+
+
+
+
+🧪 TEST
+✔ Swagger UI
+
+Visit:
+
+http://localhost:3000/api-docs
+
+✔ GET users
+GET http://localhost:3000/api/users
+
+✔ CREATE user
+POST http://localhost:3000/api/users
+
+
+Body:
+
+{
+  "name": "Victor",
+  "email": "victor@mail.com"
+}
