@@ -1,0 +1,55 @@
+   import { v2 as cloudinary } from 'cloudinary';
+    import 'dotenv/config' ;
+  
+    import fs from 'fs/promises';
+
+       cloudinary.config({ 
+            cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
+            api_key: process.env.CLOUDINARY_API_KEY, 
+            api_secret: process.env.CLOUDINARY_API_SECRET // Click 'View API Keys' above to copy your API secret
+        });
+    
+        const cloudinaryUploader = async(pathToFile, Folder)=>{
+            try {
+                const result = await cloudinary.uploader.upload(pathToFile, {
+                  folder: Folder,
+                  public_id: "latest-image", // same ID every time
+                  overwrite: true,
+                });
+                //await fs.unlink(pathToFile);
+                return result;
+            } catch (error) {
+                //await fs.unlink(pathToFile);
+                console.log("something happened in cloudinary endpoint");
+                console.log(error.message);
+                throw new Error(error.message);
+            }
+        }
+    
+        
+    
+    
+              const cloudinaryUploaderVideo = async (pathToFile, Folder) => {
+                try {
+                    const result = await cloudinary.uploader.upload(
+                      pathToFile,
+                      {
+                          resource_type: "video",
+                          public_id:"latest-video",
+                        overwrite: true, // ensures replacement
+                        folder: Folder,
+                      }
+                    );
+                  //await fs.unlink(pathToFile);
+                  return result;
+                } catch (error) {
+                 // await fs.unlink(pathToFile);
+                  console.log("something happened in cloudinary video endpoint");
+                  console.log(error.message);
+                  throw new Error(error.message);
+                }
+              };
+    
+        
+     
+export {cloudinary,cloudinaryUploaderVideo, cloudinaryUploader};

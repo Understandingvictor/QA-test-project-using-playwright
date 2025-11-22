@@ -10,27 +10,59 @@ import path from "path";
 
 
 export const videoPicsResult = () => {
-    try {
-        const dataDir = path.join(__dirname, "..", "playwright-report", "data");
+  try {
+    const dataDir = path.join(__dirname, "..", "playwright-report", "data");
+    const files = fs.readdirSync(dataDir);
 
-        const files = fs.readdirSync(dataDir);
+    const videoFile = files[files.length - 1]; // or use files[files.length-1] for last file
+    const screenShot = files[0];
 
-        const videoFile = files[files.length - 1]; // or use files[files.length-1] for last file
-        const screenShot = files[0];
-        const videoPath = path.join(dataDir, videoFile);
-        const screenshotPath = path.join(dataDir, screenShot);
+    const videoPathRelative = path.join("playwright-report", "data", videoFile);
+    const screenshotPathRelative = path.join("playwright-report", "data", screenShot);
 
-        return {
-            videoPath,
-            screenshotPath
-        }
+    // Absolute paths (for reading files in Node)
+    const videoPathAbsolute = path.resolve(videoPathRelative);
+    const screenshotPathAbsolute = path.resolve(screenshotPathRelative);
 
-    } catch (error) {
-        console.log(error.message, "is the error form video and pics result helper function")
-        throw error
-    }
-}
+    return {
+      videoPathRelative,
+      screenshotPathRelative,
+      videoPathAbsolute,
+      screenshotPathAbsolute,
+    };
+  } catch (error) {
+    console.log(
+      error.message,
+      "is the error form video and pics result helper function"
+    );
+    throw error;
+  }
+};
 
+
+export const videoPicsResult2 = () => {
+  try {
+    const dataDir = path.join(__dirname, "..", "playwright-report", "data");
+    const files = fs.readdirSync(dataDir);
+
+    const videoFile = files[files.length - 1]; // or use files[files.length-1] for last file
+    const screenShot = files[0];
+
+    const videoPath = path.join(dataDir, videoFile);
+    const screenshotPath = path.join(dataDir, screenShot);
+
+    return {
+      videoPath,
+      screenshotPath,
+    };
+  } catch (error) {
+    console.log(
+      error.message,
+      "is the error form video and pics result helper function"
+    );
+    throw error;
+  }
+};
 export const reportUrl = () => {
   try {
     const dataDir = path.join(__dirname, "..", "playwright-report");
@@ -38,17 +70,15 @@ export const reportUrl = () => {
     const files = fs.readdirSync(dataDir);
 
     const reportFile = files[files.length - 1]; // or use files[files.length-1] for last file
- 
-    const reportPath = path.join(dataDir, reportFile);
 
-    return {
-      reportPath,
-    };
+    const reportPath = path.join("playwright-report", reportFile);
+    // Absolute paths (for reading files in Node)
+    const reportPathAbsolute = path.resolve(reportPath);
+
+    return reportPathAbsolute
+    
   } catch (error) {
-    console.log(
-      error.message,
-      "is the error form report url helper function"
-    );
+    console.log(error.message,"is the error form report url helper function");
     throw error;
   }
 };

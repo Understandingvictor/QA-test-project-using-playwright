@@ -1,9 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { chromium } from '@playwright/test';
 
-let browser;
-let context;
-let page; 
+
+
 
 test.beforeAll( async () => {
       console.log("RUNNING BEFORE ALL HOOKS");
