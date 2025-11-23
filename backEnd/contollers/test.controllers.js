@@ -2,9 +2,9 @@ import { exec } from "child_process";
 import "dotenv/config";
 import { videoPicsResult, reportUrl } from "../helpers/videoPicResults.helper.js";
 import { cloudinaryUploader, cloudinaryUploaderVideo } from "../helpers/cloudinary.helper.js";
-import throwErrorMessage from "../helpers/errorHandler.helpers.js";
+import throwErrorMessage from "../helpers/errorHandler.helpers.js"
 
-
+import fetch from "node-fetch"; // Ensure 'node-fetch' is installed
 
 
 
@@ -55,7 +55,7 @@ export const ecommerceE2E = async (req, res, next) => {
 // 1. PUBLIC: Trigger Test (Endpoint for the employer's click)
 export const triggerE2E = async (req, res, next) => {
     // 1. Immediately update status to 'processing'
-    //setLatestResults({ status: 'processing', timestamp: new Date().toISOString() });
+    setLatestResults({ status: 'processing', timestamp: new Date().toISOString() });
 
     // 2. Respond instantly so the frontend doesn't time out (HTTP 202 Accepted)
     res.status(202).json({ status: "processing", message: "Test queued." });
@@ -72,7 +72,7 @@ export const triggerE2E = async (req, res, next) => {
         });
     } catch (error) {
       console.error("GitHub Dispatch Error:", error.message);
-        //setLatestResults({ status: 'failed', timestamp: new Date().toISOString(), message: "Trigger failed" });
+        setLatestResults({ status: 'failed', timestamp: new Date().toISOString(), message: "Trigger failed" });
     }
 };
 
