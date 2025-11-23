@@ -49,10 +49,12 @@ route.get("/testing", testing);
  *     summary: triggers end point to send request to ci in actions
  *     tags: [END2ENDTESTS]
  *     responses:
- *       201:
+ *       202:
  *         description: User created successfully
+ *       500:
+ *          description: Failed to dispatch to GitHub (e.g., GITHUB_PAT is invalid).
  */
-route.get("/triggerE2E", triggerE2E);
+route.post("/triggerE2E", triggerE2E);
 
 
 route.post('/api/v1/results/callbackEndpoint', callbackE2E); // This is the new secured endpoint

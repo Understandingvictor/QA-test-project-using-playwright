@@ -55,11 +55,11 @@ export const ecommerceE2E = async (req, res, next) => {
 // 1. PUBLIC: Trigger Test (Endpoint for the employer's click)
 export const triggerE2E = async (req, res, next) => {
     // 1. Immediately update status to 'processing'
-    setLatestResults({ status: 'processing', timestamp: new Date().toISOString() });
+    //setLatestResults({ status: 'processing', timestamp: new Date().toISOString() });
 
     // 2. Respond instantly so the frontend doesn't time out (HTTP 202 Accepted)
     res.status(202).json({ status: "processing", message: "Test queued." });
-
+  
     // 3. Send the command to GitHub Actions to start the workflow
     try {
         await fetch(`https://api.github.com/repos/Understandingvictor/QA-test-project-using-playwright
@@ -71,8 +71,8 @@ export const triggerE2E = async (req, res, next) => {
             body: JSON.stringify({ event_type: 'run_e2e_test' })
         });
     } catch (error) {
-        console.error("GitHub Dispatch Error:", error.message);
-        setLatestResults({ status: 'failed', timestamp: new Date().toISOString(), message: "Trigger failed" });
+      console.error("GitHub Dispatch Error:", error.message);
+        //setLatestResults({ status: 'failed', timestamp: new Date().toISOString(), message: "Trigger failed" });
     }
 };
 
