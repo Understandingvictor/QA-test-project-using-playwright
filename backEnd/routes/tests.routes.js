@@ -55,6 +55,6 @@ route.get("/testing", testing);
 route.get("/triggerE2E", triggerE2E);
 
 
-app.post('/api/v1/results/callbackEndpoint', callbackE2E); // This is the new secured endpoint
+route.post('/api/v1/results/callbackEndpoint', callbackE2E); // This is the new secured endpoint
 
 export default route;

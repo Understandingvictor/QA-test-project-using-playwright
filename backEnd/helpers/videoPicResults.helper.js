@@ -39,6 +39,26 @@ export const videoPicsResult = () => {
   }
 };
 
+export const reportUrl = () => {
+  try {
+    const dataDir = path.join(__dirname, "..", "playwright-report");
+
+    const files = fs.readdirSync(dataDir);
+
+    const reportFile = files[files.length - 1]; // or use files[files.length-1] for last file
+
+    const reportPath = path.join("playwright-report", reportFile);
+    // Absolute paths (for reading files in Node)
+    const reportPathAbsolute = path.resolve(reportPath);
+
+    return reportPathAbsolute;
+  } catch (error) {
+    console.log(error.message, "is the error form report url helper function");
+    throw error;
+  }
+};
+
+
 
 export const videoPicsResult2 = () => {
   try {
@@ -60,25 +80,6 @@ export const videoPicsResult2 = () => {
       error.message,
       "is the error form video and pics result helper function"
     );
-    throw error;
-  }
-};
-export const reportUrl = () => {
-  try {
-    const dataDir = path.join(__dirname, "..", "playwright-report");
-
-    const files = fs.readdirSync(dataDir);
-
-    const reportFile = files[files.length - 1]; // or use files[files.length-1] for last file
-
-    const reportPath = path.join("playwright-report", reportFile);
-    // Absolute paths (for reading files in Node)
-    const reportPathAbsolute = path.resolve(reportPath);
-
-    return reportPathAbsolute
-    
-  } catch (error) {
-    console.log(error.message,"is the error form report url helper function");
     throw error;
   }
 };
