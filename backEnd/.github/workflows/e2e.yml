@@ -1,0 +1,60 @@
+name: Playwright E2E & Cloudinary Upload
+
+on:
+  # Triggers the workflow on push or pull request events to the 'main' branch
+  push:
+    branches: [ main ]
+  # Allows you to run this workflow manually from the Actions tab
+  #workflow_dispatch:
+  # Runs every day at 00:00 UTC
+  #schedule:
+  #  - cron: '0 0 * * *'
+  # Allows triggering via POST request to GitHub
+  repository_dispatch:
+    types: [run_e2e_test]
+
+jobs:
+  run-tests-and-upload:
+    runs-on: ubuntu-latest
+    
+    # Define environment variables needed by the Cloudinary helper
+    env:
+      CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+      CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+      CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+      # Secret for authenticating the callback to your Render API
+      RENDER_UPDATE_SECRET: ${{ secrets.RENDER_SECRET }}
+      # The base URL of your deployed Render app (MANDATORY for callback)
+      RENDER_EXTERNAL_URL: ${{ secrets.RENDER_EXTERNAL_URL }}
+      # You might also need other environment variables for your application under test
+      # For example: BASE_URL: '[https://your-live-app.com](https://your-live-app.com)'
+
+      # You might also need other environment variables for your application under test
+      # For example: BASE_URL: 'https://your-live-app.com'
+
+    steps:
+    - name: ⬇️ Checkout code
+      uses: actions/checkout@v4
+
+    - name: ⚙️ Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' # Use a stable version
+
+    - name: 📦 Install dependencies
+      # Change directory to your 'backEnd' folder
+      run: cd backEnd && npm ci
+
+    - name: 🌐 Install Playwright Browsers
+      # Install browsers with system dependencies (crucial for CI)
+      run: cd backEnd && npx playwright install --with-deps
+
+    - name: 🏃 Run Playwright tests
+      # Your Playwright command. This generates files in 'backEnd/test-results'
+      run: cd backEnd && npx playwright test
+
+    - name: ⬆️ Upload Test Artifacts (Screenshots/Videos)
+      # This step mimics the logic of your helper functions but runs directly in CI.
+      # Since you need to run specific helper functions written in Node.js, 
+      # we'll execute a simplified Node script to find the latest files and upload them.
+      run: cd backEnd && node ci-upload.js

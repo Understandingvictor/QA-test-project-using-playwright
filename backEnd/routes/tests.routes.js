@@ -1,5 +1,10 @@
 import express from "express"
-import { ecommerceE2E, testing } from "../contollers/test.controllers.js";
+import {
+  ecommerceE2E,
+  testing,
+  triggerE2E,
+  callbackE2E,
+} from "../contollers/test.controllers.js";
 const route = express.Router()
 
 
@@ -35,5 +40,21 @@ route.get("/ecommerceEnd2End", ecommerceE2E);
  */
 
 route.get("/testing", testing);
+
+
+/**
+ * @swagger
+ * /triggerE2E:
+ *   post:
+ *     summary: triggers end point to send request to ci in actions
+ *     tags: [END2ENDTESTS]
+ *     responses:
+ *       201:
+ *         description: User created successfully
+ */
+route.get("/triggerE2E", triggerE2E);
+
+
+app.post('/api/v1/results/callbackEndpoint', callbackE2E); // This is the new secured endpoint
 
 export default route;
