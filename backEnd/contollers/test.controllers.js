@@ -3,7 +3,7 @@ import "dotenv/config";
 import { videoPicsResult, reportUrl } from "../helpers/videoPicResults.helper.js";
 import { cloudinaryUploader, cloudinaryUploaderVideo } from "../helpers/cloudinary.helper.js";
 import throwErrorMessage from "../helpers/errorHandler.helpers.js"
-
+import { setLatestResults, getLatestResults } from "../helpers/resultsStore.js";
 import fetch from "node-fetch"; // Ensure 'node-fetch' is installed
 
 
@@ -72,22 +72,44 @@ export const triggerE2E = async (req, res, next) => {
         });
     } catch (error) {
       console.error("GitHub Dispatch Error:", error.message);
-        setLatestResults({ status: 'failed', timestamp: new Date().toISOString(), message: "Trigger failed" });
+           setLatestResults({
+             status: "failed",
+             errorMessage: `Failed to dispatch to GitHub: ${error.message}. Check GITHUB_PAT and repo details.`,
+           });
+         }
     }
-};
 
 //endpoint which github actions will send results to
 export const callbackE2E = async (req, res, next) => {
   try {
-    const bodyObj = req.body 
-    console.log(bodyObj, "was returned from actions");
-      if (bodyObj.apiSecret !== process.env.GITHUB_ACTIONS_SECRET) {
+    const { videoUrl, screenshotUrl, apiSecret, error } = req.body;
+    console.log(videoUrl, screenshotUrl,"was returned from actions");
+    if (apiSecret !== process.env.GITHUB_ACTIONS_SECRET) {
+      console.error("Callback failed: Invalid API_UPDATE_SECRET provided.");
+       return res.status(403).json({ message: "Unauthorized callback request." });
         throwErrorMessage("bad request", 400);
     }
-      else if (bodyObj?.error) {
-        throwErrorMessage("something went wrong", 500);
+    else if (error) {
+      // Handle failure reported by the CI script
+          setLatestResults({
+            status: "failed",
+            timestamp: new Date().toISOString(),
+            errorMessage: error,
+            videoUrl: null,
+            screenshotUrl: null,
+          });
+          return res.status(200).json({ status: "failure acknowledged" });
+            throwErrorMessage("something went wrong", 500);
     }
     
+      // Success case: Update the state with the secure URLs
+      setLatestResults({
+        status: "complete",
+        timestamp: new Date().toISOString(),
+        videoUrl: videoUrl,
+        screenshotUrl: screenshotUrl,
+        errorMessage: null,
+      });
     //Update the ui
     return res.json({ screenshotUrl, videoUrl, "message":"returned successfully" });
   } catch (error) {
@@ -95,6 +117,12 @@ export const callbackE2E = async (req, res, next) => {
     next(error);
   }
 }
+
+// --- 1. Endpoint for the Employer's UI to poll (GET /getLatestStatus) ---
+export const getLatestStatus = (req, res, next) => {
+  // Returns the current state object (status, URLs, error message)
+  res.status(200).json(getLatestResults());
+};
 
 export const testing = async (req, res, next) => {
       const files = videoPicsResult();

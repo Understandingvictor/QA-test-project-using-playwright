@@ -4,6 +4,7 @@ import {
   testing,
   triggerE2E,
   callbackE2E,
+  getLatestStatus,
 } from "../contollers/test.controllers.js";
 const route = express.Router()
 
@@ -59,4 +60,17 @@ route.post("/triggerE2E", triggerE2E);
 
 route.post('/api/v1/results/callbackEndpoint', callbackE2E); // This is the new secured endpoint
 
+
+/**
+ * @swagger
+ * /getLatestStatus:
+ *   get:
+ *     summary: status polling
+ *     tags: [END2ENDTESTS]
+ *     responses:
+ *       200:
+ *         description: endpoint for polling status
+ */
+
+route.get("/getLatestStatus", getLatestStatus);
 export default route;
