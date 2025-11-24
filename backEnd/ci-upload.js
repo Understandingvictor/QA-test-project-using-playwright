@@ -78,7 +78,7 @@ async function uploadResults() {
     console.log(`Screenshot uploaded: ${uploadedScreenshot.secure_url}`);
     success = true;
      uploadedVideoUrl = uploadedVideo.secure_url;
-     uploadedScreenshotUrl = uploadedScreenshotUrl.secure_url;
+     uploadedScreenshotUrl = uploadedScreenshot.secure_url;
     // OPTIONAL: Save these URLs to a database or a file that the Render app can read
     // For a simple portfolio, you can just log the URLs and update your frontend manually or use a simple JSON file.
   } catch (error) {
