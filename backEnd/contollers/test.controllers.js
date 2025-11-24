@@ -66,7 +66,9 @@ export const triggerE2E = async (req, res, next) => {
 /dispatches`, {
             method: 'POST',
             headers: {
-                'Authorization': `token ${process.env.GITHUB_PAT}` // GitHub PAT secret
+              'Authorization': `token ${process.env.GITHUB_PAT}`, // GitHub PAT secret
+               'Accept': 'application/vnd.github.v3+json',
+              
             },
             body: JSON.stringify({ event_type: 'run_e2e_test' })
         });

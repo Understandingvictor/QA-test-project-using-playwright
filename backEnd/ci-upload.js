@@ -6,12 +6,12 @@ import { videoPicsResult } from "./helpers/videoPicResults.helper.js";
 import {cloudinaryUploader, cloudinaryUploaderVideo} from "./helpers/cloudinary.helper.js";
 import { v2 as cloudinary } from "cloudinary";
 
-// Configure Cloudinary using environment variables from GitHub Actions
-// cloudinary.config({
-//   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET,
-// });
+//Configure Cloudinary using environment variables from GitHub Actions
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 async function uploadResults() {
   let uploadedVideoUrl = null;

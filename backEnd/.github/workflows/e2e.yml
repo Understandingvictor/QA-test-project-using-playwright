@@ -23,7 +23,7 @@ jobs:
       CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
       CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
       # Secret for authenticating the callback to your Render API
-      RENDER_UPDATE_SECRET: ${{ secrets.RENDER_SECRET }}
+      RENDER_UPDATE_SECRET: ${{ secrets.RENDER_UPDATE_SECRET }}
       # The base URL of your deployed Render app (MANDATORY for callback)
       RENDER_EXTERNAL_URL: ${{ secrets.RENDER_EXTERNAL_URL }}
       # You might also need other environment variables for your application under test

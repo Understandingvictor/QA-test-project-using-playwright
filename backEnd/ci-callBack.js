@@ -6,7 +6,7 @@ import "dotenv/config";
 // --- CI CONFIG (Environment variables are passed from the GitHub workflow YAML) ---
 //configure in ci on github actions
 const RENDER_BASE_URL = process.env.RENDER_EXTERNAL_URL; 
-const CALLBACK_ENDPOINT = `/api/v1/results/callbackEndpoint'`; // Matches the Express route
+const CALLBACK_ENDPOINT = `/api/v1/results/callbackEndpoint`; // Matches the Express route
 const CALLBACK_URL = `${RENDER_BASE_URL}${CALLBACK_ENDPOINT}`;
 
 
