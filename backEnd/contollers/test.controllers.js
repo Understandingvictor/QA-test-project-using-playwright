@@ -61,6 +61,7 @@ export const triggerE2E = async (req, res, next) => {
     res.status(202).json({ status: "processing", message: "Test queued." });
   
     // 3. Send the command to GitHub Actions to start the workflow
+    console.log("dispatched and starting in github");
     try {
         await fetch(`https://api.github.com/repos/Understandingvictor/QA-test-project-using-playwright
 /dispatches`, {
@@ -73,7 +74,7 @@ export const triggerE2E = async (req, res, next) => {
             body: JSON.stringify({ event_type: 'run_e2e_test' })
         });
     } catch (error) {
-      console.error("GitHub Dispatch Error:", error.message);
+      console.log("GitHub Dispatch Error:", error.message);
            setLatestResults({
              status: "failed",
              errorMessage: `Failed to dispatch to GitHub: ${error.message}. Check GITHUB_PAT and repo details.`,
