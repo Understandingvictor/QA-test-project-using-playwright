@@ -14,8 +14,21 @@ export const videoPicsResult = () => {
     const dataDir = path.join(__dirname, "..", "playwright-report", "data");
     const files = fs.readdirSync(dataDir);
 
-    const videoFile = files[files.length - 1]; // or use files[files.length-1] for last file
-    const screenShot = files[0];
+    let videoFile;
+    let screenShot; 
+    
+    files.map((file, index) => {
+      const fileExtension = file.split('.')[1]
+      if (fileExtension != 'png') {
+        videoFile = file;
+      }
+      else {
+        screenShot = file;
+      }
+    })
+    //console.log(videoFile, screenShot, "are the vide and picture files");
+    // const videoFile = files[files.length - 1]; // or use files[files.length-1] for last file
+    // const screenShot = files[0];
 
     const videoPathRelative = path.join("playwright-report", "data", videoFile);
     const screenshotPathRelative = path.join("playwright-report", "data", screenShot);

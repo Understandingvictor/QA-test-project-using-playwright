@@ -52,6 +52,7 @@ async function uploadResults() {
   let uploadedScreenshotUrl = null;
   let success = false;
   let ciError = null;
+  
   try {
     console.log("Starting CI file upload...");
 
