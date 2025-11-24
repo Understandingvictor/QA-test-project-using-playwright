@@ -12,7 +12,7 @@ test.afterAll( async()=> {
 })
 
 
-test.only("E2E Saucedemo Checkout Flow", async ({ page }) => {
+test("E2E Saucedemo Checkout Flow", async ({ page }) => {
   // Go to the homepage
   await page.goto("https://www.saucedemo.com/");
 
