@@ -52,7 +52,7 @@ async function uploadResults() {
   let uploadedScreenshotUrl = null;
   let success = false;
   let ciError = null;
-  
+
   try {
     console.log("Starting CI file upload...");
 
@@ -67,6 +67,7 @@ async function uploadResults() {
       files.videoPathAbsolute,
       "playwright-results"
     );
+   
     console.log(`Video uploaded: ${uploadedVideo.secure_url}`);
 
     // Upload Screenshot
@@ -76,6 +77,8 @@ async function uploadResults() {
     );
     console.log(`Screenshot uploaded: ${uploadedScreenshot.secure_url}`);
     success = true;
+     uploadedVideoUrl = uploadedVideo.secure_url;
+     uploadedScreenshotUrl = uploadedScreenshotUrl.secure_url;
     // OPTIONAL: Save these URLs to a database or a file that the Render app can read
     // For a simple portfolio, you can just log the URLs and update your frontend manually or use a simple JSON file.
   } catch (error) {

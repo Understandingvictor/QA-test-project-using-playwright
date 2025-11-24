@@ -114,6 +114,7 @@ export const callbackE2E = async (req, res, next) => {
         errorMessage: null,
       });
     //Update the ui
+    
     return res.json({ screenshotUrl, videoUrl, "message":"returned successfully" });
   } catch (error) {
     console.log(error.message, "error happened on callbackE2E");
