@@ -1,0 +1,9 @@
+{
+    // This tells the compiler where to look for source files
+    "baseUrl": "src", 
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
