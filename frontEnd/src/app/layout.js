@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import localFont from 'next/font/local'; // 1. Import the local font module
+import localFont from "next/font/local"; // 1. Import the local font module
+import { ThemeProvider } from "@/component/theme-provider";
 import "./globals.css";
-
 
 // Configure your primary font (e.g., for body text)
 const pop1 = localFont({
@@ -44,11 +44,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${pop1.variable} ${pop2.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

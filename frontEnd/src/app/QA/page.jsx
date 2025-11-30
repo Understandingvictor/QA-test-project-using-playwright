@@ -1,10 +1,12 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Image from "next/image";
+import { ModeToggle } from "@/component/button";
 export default function Qa() {
   const [videoUrl, setVideoUrl] = useState(null);
   return (
     <>
+      <ModeToggle />
       <main
         className=""
         style={{
