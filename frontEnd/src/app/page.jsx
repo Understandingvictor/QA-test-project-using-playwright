@@ -249,11 +249,13 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                           <h1 className="mt-4 dark:text-black">
                             Its demo time!!!
                           </h1>
-                          <h1>YOU CAN RUN A LIVE DEMO</h1>
+                          <h1 className="dark:text-black">
+                            YOU CAN RUN A LIVE DEMO
+                          </h1>
                         </div>
 
                         <hr className="max-w-2/3 border-[#1A53A0] shadow-[#1A53A0] shadow-7xl mt-5"></hr>
-                        <p className="mt-5 md:m-3 mb-5 md:text-sm text-xs">
+                        <p className="mt-5 md:m-3 dark:text-black mb-5 md:text-sm text-xs">
                           click run the test button to trigger the test and wait
                           for the test to finish so you can see the result
                         </p>
@@ -261,11 +263,11 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                     </div>
 
                     <center>
-                      <button className=" mt-10 mb-10 border-2 border-[#1A53A0] hover:bg-[#1A53A0] hover:text-white p-3 rounded-sm ">
+                      <button className=" mt-10 mb-10 border-2 dark:text-black text-black border-[#1A53A0]  hover:text-white hover:shadow-2xl active:text-white active:bg-[#1A53A0]  focus:text-white  hover:bg-indigo-700 hover:shadow-[#1A53A0] p-3 rounded-sm ">
                         RUN TEST
                       </button>{" "}
                       <br />
-                      <small className="text-italic lg:text-sm lg:mb-3 ">
+                      <small className="text-italic dark:text-black lg:text-sm lg:mb-3 ">
                         After ther test, result will show below
                       </small>
                     </center>
@@ -279,7 +281,7 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                   href={`https://drive.google.com/uc?export=download&id=1VzkjbZvl8dmEVgKspisLoyCRwnnVgGgO`}
                   target="_blank" // Opens the link in a new tab
                   rel="noopener noreferrer" // Security best practice for target="_blank"
-                  className="w-full mt-10 mb-10  text-center block px-6 py-3 text-lg font-semibold rounded-lg text-white bg-[#1A53A0] hover:bg-indigo-700 transition duration-150 shadow-lg"
+                  className="w-full mt-10 mb-10  text-center block px-6 py-3 text-lg font-semibold rounded-lg text-white bg-[#1A53A0] hover:bg-indigo-700 active:bg-[#1A53A0]  transition duration-150 shadow-lg"
                 >
                   Download My CV (PDF)
                 </a>
