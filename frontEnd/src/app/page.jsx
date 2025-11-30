@@ -6,9 +6,9 @@ export default function Qa() {
   const [videoUrl, setVideoUrl] = useState(null);
   return (
     <>
-      <main className="dark:bg-[url(/bgdarkmain.jpg)]  bg-[url(/bgbg.svg)] bg-no-repeat bg-cover">
-        <header className="">
-          <div className=" flex justify-end mr-5 mt-3">
+      <main className="dark:bg-[url(/bgdarkmain.jpg)] bg-[url(/bgbg.svg)] p-2 bg-no-repeat bg-cover">
+        <header className=" ">
+          <div className=" flex justify-end mr-5 mt-3 fixed right-0">
             <ModeToggle />
           </div>
           <Image
@@ -180,60 +180,52 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                         playwright, Github Actions, VsCode, Websockets
                       </p>
                       <p className="m-2">
-                        <span className="font-pop1">TEST CASES:</span> Link to
-                        test cases pdf
+                        <span className="font-pop1">TEST CASES:</span>{" "}
+                        <a
+                          className="text-[#1A53A0] underline"
+                          href="https://drive.google.com/file/d/12ox0zVzSOvY4Qr9BejLsSffjGgTG-MPO/view?usp=sharing"
+                        >
+                          Link to test cases pdf
+                        </a>
                       </p>
                       <p className="m-2">
                         <span className="font-pop1">WHAT I TESTED:</span> E2E
                         tests to be sure website is functional
                       </p>
                       <p className="m-2">
-                        <span className="font-pop1">WEBSITE URL:</span>
-                        https://www.saucedemo.com
+                        <span className="font-pop1">WEBSITE URL: </span>
+                        <a
+                          target="_blank"
+                          className="text-[#1A53A0] underline"
+                          href="https://www.saucedemo.com/"
+                        >
+                          https://www.saucedemo.com
+                        </a>
                       </p>
                     </div>
                     <div className="m-2">
                       <span className="text-[#1A53A0] flex md:items-center md:gap-3  mt-2 mb-2">
                         code ------
-                        <Image
-                          src="/code.png"
-                          width={24}
-                          height={24}
-                          className="md:w-[10%] lg:w-[3%]"
-                          alt="code"
-                        />
+                        <a
+                          href="https://github.com/Understandingvictor/QA-test-project-using-playwright/tree/main/backEnd"
+                          target="_blank"
+                        >
+                          <Image
+                            src="/code.png"
+                            width={24}
+                            height={24}
+                            className="md:w-[10%] lg:w-[3%]"
+                            alt="code"
+                          />
+                        </a>
                       </span>
                     </div>
                   </div>
-                  <center>
-                    <hr className="max-w-2/3 border-[#1A53A0] shadow-[#1A53A0] md:mt-8 shadow-7xl mt-5"></hr>
-                    <h1 className="mt-4 dark:text-black">Its demo time!!!</h1>
-                    <hr className="max-w-2/3 border-[#1A53A0] shadow-[#1A53A0] shadow-7xl mt-5"></hr>
-                  </center>
+
                   <div className="shadow-sm mt-5">
-                    <Image
-                      src="/demo.png"
-                      width={44}
-                      height={44}
-                      className="md:w-[10%] m-3 lg:w-[7%]"
-                      alt="demo"
-                    />
                     <div className="text-sm dark:text-black">
-                      <p className="mt-5 md:m-3 mb-5 md:text-sm text-xs">
-                        click run the test button to trigger the test and wait
-                        for the test to finish so you can see the result
-                      </p>
-                      <center>
-                        <button className=" mt-10 mb-10 border-2 border-[#1A53A0] p-3 rounded-sm ">
-                          RUN TEST
-                        </button>{" "}
-                        <br />
-                        <small className="text-italic lg:text-sm lg:mb-3 ">
-                          After ther test, result will show below
-                        </small>
-                      </center>
                       <div className="lg:mt-3 ">
-                        <div className="max-w-full borderflex justify-center">
+                        <div className="max-w-full border flex justify-center">
                           <video controls width="600" height="auto">
                             <source
                               src="https://res.cloudinary.com/dfn41fqnx/video/upload/v1764353011/playwright-results/latest-video.webm"
@@ -243,15 +235,54 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                         </div>
                       </div>
                     </div>
+                    <div className="mt-15">
+                      <center>
+                        <hr className="max-w-2/3 border-[#1A53A0] shadow-[#1A53A0] md:mt-8 shadow-7xl mt-5"></hr>
+                        <div className="flex flex-col items-center justify-center">
+                          <Image
+                            src="/demo.png"
+                            width={44}
+                            height={44}
+                            className="md:w-[10%] m-3 lg:w-[7%]"
+                            alt="demo"
+                          />
+                          <h1 className="mt-4 dark:text-black">
+                            Its demo time!!!
+                          </h1>
+                          <h1>YOU CAN RUN A LIVE DEMO</h1>
+                        </div>
+
+                        <hr className="max-w-2/3 border-[#1A53A0] shadow-[#1A53A0] shadow-7xl mt-5"></hr>
+                        <p className="mt-5 md:m-3 mb-5 md:text-sm text-xs">
+                          click run the test button to trigger the test and wait
+                          for the test to finish so you can see the result
+                        </p>
+                      </center>
+                    </div>
+
+                    <center>
+                      <button className=" mt-10 mb-10 border-2 border-[#1A53A0] hover:bg-[#1A53A0] hover:text-white p-3 rounded-sm ">
+                        RUN TEST
+                      </button>{" "}
+                      <br />
+                      <small className="text-italic lg:text-sm lg:mb-3 ">
+                        After ther test, result will show below
+                      </small>
+                    </center>
                   </div>
                 </div>
               </div>
             </section>
             <section>
               <center>
-                <button className=" mt-10 mb-10 border-2 border-[#1A53A0] p-3 rounded-sm">
-                  DOWNLOAD MY CV
-                </button>
+                <a
+                  href={`https://drive.google.com/uc?export=download&id=1VzkjbZvl8dmEVgKspisLoyCRwnnVgGgO`}
+                  target="_blank" // Opens the link in a new tab
+                  rel="noopener noreferrer" // Security best practice for target="_blank"
+                  className="w-full mt-10 mb-10  text-center block px-6 py-3 text-lg font-semibold rounded-lg text-white bg-[#1A53A0] hover:bg-indigo-700 transition duration-150 shadow-lg"
+                >
+                  Download My CV (PDF)
+                </a>
               </center>
             </section>
             <section>
