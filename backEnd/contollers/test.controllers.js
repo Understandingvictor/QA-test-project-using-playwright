@@ -8,7 +8,7 @@ import fetch from "node-fetch"; // Ensure 'node-fetch' is installed
 import {getCurrentSocketId} from "../helpers/resultsStore.js";
 import { GETIO } from "../helpers/socket.js";
 
-let socketIdRetrieved;
+//let socketIdRetrieved;
 
 
 
@@ -18,7 +18,7 @@ export const triggerE2E = async (req, res, next) => {
   //socketIdRetrieved = socketId;
 
 
-  console.log(socketId, "is the socket ID at trigger");
+  //console.log(socketId, "is the socket ID at trigger");
   //console.log(socketIdRetrieved, "is the global socket id");
 
     // 1. Immediately update status to 'processing'
@@ -26,7 +26,7 @@ export const triggerE2E = async (req, res, next) => {
 
     //Retrieve the Socket ID from the store
     const socketIdToEmit = getCurrentSocketId();
-    console.log("socketIdToEmit is", socketIdToEmit);
+    //console.log("socketIdToEmit is", socketIdToEmit);
 
 
     // 2. Respond instantly so the frontend doesn't time out (HTTP 202 Accepted)
@@ -62,7 +62,7 @@ export const callbackE2E = async (req, res, next) => {
 
     //Retrieve the Socket ID from the store
     const socketIdToEmit = getCurrentSocketId();
-    console.log(socketIdToEmit, "this is from callbacke2e endpoint");
+    //console.log(socketIdToEmit, "this is from callbacke2e endpoint");
   try {
     const { videoUrl, screenshotUrl, apiSecret, error } = req.body;
     console.log(videoUrl, screenshotUrl, "are what was retrieved");
@@ -73,13 +73,13 @@ export const callbackE2E = async (req, res, next) => {
     }
     else if (error) {
       // Handle failure reported by the CI script
-          // setLatestResults({
-          //   status: "failed",
-          //   timestamp: new Date().toISOString(),
-          //   errorMessage: error,
-          //   videoUrl: null,
-          //   screenshotUrl: null,
-          // });
+          setLatestResults({
+            status: "failed",
+            timestamp: new Date().toISOString(),
+            errorMessage: error,
+            videoUrl: null,
+            screenshotUrl: null,
+          });
            console.log(socketIdToEmit, "is the socket id in the callback function error path")
         io.to(socketIdToEmit).emit("privateMessage", {
           status: error.message,
@@ -92,32 +92,33 @@ export const callbackE2E = async (req, res, next) => {
             throwErrorMessage("something went wrong", 500);
     }
     
-      // Success case: Update the state with the secure URLs
-      // setLatestResults("privateMessage", {
-      //   status: "complete",
-      //   timestamp: new Date().toISOString(),
-      //   videoUrl: videoUrl,
-      //   screenshotUrl: screenshotUrl,
-      //   errorMessage: null,
-      // });
-    console.log(socketIdToEmit, "is the socket id in the callback function")
-    io.to(socketIdToEmit).emit("privateMessage", {message:"i succeeded"});
+      //Success case: Update the state with the secure URLs
+      setLatestResults("privateMessage", {
+        status: "complete",
+        timestamp: new Date().toISOString(),
+        videoUrl: videoUrl,
+        screenshotUrl: screenshotUrl,
+        errorMessage: null,
+      });
+    //console.log(socketIdToEmit, "is the socket id in the callback function")
 
-    // io.to(socketIdRetrieved).emit("privateMessage",{
-    //   status: "complete",
-    //   timestamp: new Date().toISOString(),
-    //   videoUrl: videoUrl,
-    //   screenshotUrl: screenshotUrl,
-    //   errorMessage: null,
-    // });
-    //return res.json({ screenshotUrl, videoUrl, "message":"returned successfully" });
+    //io.to(socketIdToEmit).emit("privateMessage", {message:"i succeeded"});
+
+    io.to(socketIdRetrieved).emit("privateMessage",{
+      status: "complete",
+      timestamp: new Date().toISOString(),
+      videoUrl: videoUrl,
+      screenshotUrl: screenshotUrl,
+      errorMessage: null,
+    });
+    return res.json({ screenshotUrl, videoUrl, "message":"returned successfully" });
   } catch (error) {
     console.log(error.message, "error happened on callbackE2E");
     next(error);
   }
 }
 
-// --- 1. Endpoint for the Employer's UI to poll (GET /getLatestStatus) ---
+//Endpoint for the Employer's UI to poll (GET /getLatestStatus) ---
 export const getLatestStatus = (req, res, next) => {
   // Returns the current state object (status, URLs, error message)
   res.status(200).json(getLatestResults());

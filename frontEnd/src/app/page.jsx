@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ModeToggle } from "@/component/button";
 import callBackEnd from "@/lib/callBackEnd";
 import Spinner from "@/component/spinner";
+import CountdownTimer from "@/component/timer"
 
 const backEndUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 const socket = io.connect(backEndUrl); // all client connects to this backend
@@ -53,6 +54,7 @@ export default function Qa() {
     try {
       //socket.emit("handleClick", { message: "click is handled gracefully" });
       setIsClicked(true);
+      setNewVideoUrl(prev=>({...prev, videoUrl:null}))
       const data = await callBackEnd(socket.id);
       setMessage(data)
     } catch (error) {
@@ -71,8 +73,9 @@ export default function Qa() {
   useEffect(() => {
     socket.on("privateMessage", (response) => {
       console.log(response, "from useffect frontend");
-      //setNewVideoUrl(response);
+      setNewVideoUrl(response);
       setIsClicked(false);
+      setMessage({ status: "complete", message: "Test Passed" })
     });
   }, [socket]);
   return (
@@ -347,7 +350,10 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                       <p className="text-italic dark:text-black lg:text-sm lg:mb-3">
                         {message.message} | {message.status}
                       </p>
-                      <div className="text-sm dark:text-black">
+                       {isClicked && <CountdownTimer/>}
+                      {
+                        newVideoUrl.videoUrl && (
+                          <div className="text-sm dark:text-black">
                         <div className="lg:mt-3 ">
                           <div className="max-w-full border flex justify-center">
                             <video controls width="600" height="auto">
@@ -359,6 +365,9 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                           </div>
                         </div>
                       </div>
+                        )
+                      }
+                      
                     </center>
                   </div>
                 </div>

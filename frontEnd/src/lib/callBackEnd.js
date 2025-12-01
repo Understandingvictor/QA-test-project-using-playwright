@@ -18,7 +18,7 @@ export default async function callBackEnd(socketId) {
         if (!res.ok) {
             console.log("not working")
         }
-        console.log("working");
+        //console.log("working");
         const data = await res.json();
         return data;
     } catch (error) {
