@@ -1,9 +1,80 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { io } from "socket.io-client";
 import Image from "next/image";
 import { ModeToggle } from "@/component/button";
+import callBackEnd from "@/lib/callBackEnd";
+import Spinner from "@/component/spinner";
+
+const backEndUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
+const socket = io.connect(backEndUrl); // all client connects to this backend
+
+//localStorage.setItem("socketId", `${socket.id}`);
+
+
 export default function Qa() {
-  const [videoUrl, setVideoUrl] = useState(null);
+
+  const [videoUrl, setVideoUrl] = useState({
+    status: "failed",
+    timestamp: new Date().toISOString(),
+    errorMessage: "error",
+    videoUrl:"https://res.cloudinary.com/dfn41fqnx/video/upload/v1764353011/playwright-results/latest-video.webm",
+    screenshotUrl: null,
+  });
+  
+    const [newVideoUrl, setNewVideoUrl] = useState({
+      status: "",
+      timestamp: new Date().toISOString(),
+      errorMessage: "error",
+      videoUrl:null,
+      screenshotUrl: null,
+    });
+  
+  const [isClicked, setIsClicked] = useState(false);
+  const [outgoing, setOutgoing] = useState("");
+
+  const [message, setMessage] = useState({
+    status: "",
+    message: "",
+  });
+
+
+
+
+  //simulation of a chat app
+  // const sendMessage = () => {
+  //   try {
+  //     socket.emit("handleClick", { outgoing });
+  //   } catch (error) {
+  //     console.log(error.message)
+  //   }
+  // }
+  const handleClick = async() => {
+    try {
+      //socket.emit("handleClick", { message: "click is handled gracefully" });
+      setIsClicked(true);
+      const data = await callBackEnd(socket.id);
+      setMessage(data)
+    } catch (error) {
+      console.log(error.message, "something went wrong")
+    }
+  }
+  // const setSocketId = () => {
+  //   localStorage.setItem("socketId", `${socket.id}`);
+  //   console.log(localStorage);
+  // };
+  // const viewSocketId = () => {
+  //   console.log(localStorage.getItem("socketId"));
+  //   console.log(localStorage)
+  // }
+
+  useEffect(() => {
+    socket.on("privateMessage", (response) => {
+      console.log(response, "from useffect frontend");
+      //setNewVideoUrl(response);
+      setIsClicked(false);
+    });
+  }, [socket]);
   return (
     <>
       <main className="dark:bg-[url(/bgdarkmain.jpg)] bg-[url(/bgbg.svg)] p-2 bg-no-repeat bg-cover">
@@ -37,15 +108,16 @@ export default function Qa() {
                 Manual
               </li>
             </ul>
+
             <section className="max-w-full   flex justify-center my-3">
               <div className=" flex md:gap-5 flex-col md:flex-row-reverse justify-center items-center">
-                <div className="border-2 md:flex-1 dark:bg-transparent dark:border-none  border-[#1A53A0] mb-3 md:rounded-full md:bg-[#1A53A0] md:shadow-2xl rounded-full md:flex md:justify-center w-[50%] overflow-hidden">
+                <div className="border-2 md:flex-1 dark:bg-transparent dark:border-none bg-[#1A53A0]  border-[#1A53A0] mb-3 md:rounded-full md:bg-[#1A53A0] md:shadow-2xl rounded-full md:flex md:justify-center w-[50%] overflow-hidden">
                   <Image
                     src="/me.jpeg"
                     width={200}
                     height={40}
                     alt="gears"
-                    className=""
+                    className=" shadow-sm"
                   />
                 </div>
                 <div
@@ -227,10 +299,7 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                       <div className="lg:mt-3 ">
                         <div className="max-w-full border flex justify-center">
                           <video controls width="600" height="auto">
-                            <source
-                              src="https://res.cloudinary.com/dfn41fqnx/video/upload/v1764353011/playwright-results/latest-video.webm"
-                              type="video/webm"
-                            />
+                            <source src={videoUrl.videoUrl} type="video/webm" />
                           </video>
                         </div>
                       </div>
@@ -263,13 +332,33 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                     </div>
 
                     <center>
-                      <button className=" mt-10 mb-10 border-2 dark:text-black text-black border-[#1A53A0]  hover:text-white hover:shadow-2xl active:text-white active:bg-[#1A53A0]  focus:text-white  hover:bg-indigo-700 hover:shadow-[#1A53A0] p-3 rounded-sm ">
-                        RUN TEST
-                      </button>{" "}
+                      <div
+                        onClick={handleClick}
+                        className=" max-w-[50%] justify-center items-center gap-2 flex mt-10 mb-10 border-2 dark:text-black text-black border-[#1A53A0]  hover:text-white hover:shadow-2xl active:text-white active:bg-[#1A53A0]  focus:text-white  hover:bg-indigo-700 hover:shadow-[#1A53A0] p-3 rounded-sm "
+                      >
+                        <h1>RUN TEST</h1>
+                        {isClicked && <Spinner />}
+                      </div>
+
                       <br />
                       <small className="text-italic dark:text-black lg:text-sm lg:mb-3 ">
                         After ther test, result will show below
                       </small>
+                      <p className="text-italic dark:text-black lg:text-sm lg:mb-3">
+                        {message.message} | {message.status}
+                      </p>
+                      <div className="text-sm dark:text-black">
+                        <div className="lg:mt-3 ">
+                          <div className="max-w-full border flex justify-center">
+                            <video controls width="600" height="auto">
+                              <source
+                                src={newVideoUrl.videoUrl}
+                                type="video/webm"
+                              />
+                            </video>
+                          </div>
+                        </div>
+                      </div>
                     </center>
                   </div>
                 </div>

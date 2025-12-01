@@ -1,6 +1,7 @@
-import cors from 'cors'
+import cors from "cors"
 
 import express from "express"
+import initiateWebSocket from "./helpers/socket.js";
 import "dotenv/config";
 import { swaggerDocs } from './swagger/swagger.js';
 import testRoute from "./routes/tests.routes.js"
@@ -17,9 +18,13 @@ import testRoute from "./routes/tests.routes.js"
 const app = express();
 const port = process.env.PORT || 8000;
 
+initiateWebSocket(app, port);
+
 //app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // console.log(process.env.FRONT_END, "is trh front end");
 //general middleware
+
+
 app.use(express.json());
 
 app.use(cors({

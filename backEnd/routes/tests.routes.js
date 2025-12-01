@@ -1,6 +1,5 @@
 import express from "express"
 import {
-  ecommerceE2E,
   testing,
   triggerE2E,
   callbackE2E,
@@ -27,12 +26,12 @@ const route = express.Router()
  *         description: this test visits a demo ecommerce site adds products to cart and checks out.
  */
 
-route.get("/ecommerceEnd2End", ecommerceE2E);
+//route.get("/ecommerceEnd2End", ecommerceE2E);
 
 /**
  * @swagger
  * /testing:
- *   get:
+ *   post:
  *     summary: test
  *     tags: [END2ENDTESTS]
  *     responses:
@@ -40,7 +39,7 @@ route.get("/ecommerceEnd2End", ecommerceE2E);
  *         description: testing out things
  */
 
-route.get("/testing", testing);
+route.post("/testing", testing);
 
 
 /**
@@ -57,7 +56,7 @@ route.get("/testing", testing);
  */
 route.post("/triggerE2E", triggerE2E);
 
-
+ 
 route.post('/api/v1/results/callbackEndpoint', callbackE2E); // This is the new secured endpoint
 
 
