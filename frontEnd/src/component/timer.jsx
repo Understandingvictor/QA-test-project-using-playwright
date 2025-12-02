@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const INITIAL_SECONDS = 90; // 2 minutes * 60 seconds
 
-export default function CountdownTimer(onclickHandler) {
+export default function CountdownTimer() {
   // State for time remaining, starting at 120 seconds
   const [timeRemaining, setTimeRemaining] = useState(INITIAL_SECONDS);
   // Ref to hold the interval ID for cleanup
@@ -44,10 +44,7 @@ export default function CountdownTimer(onclickHandler) {
 
   }, [timeRemaining]); // Dependency: Re-run effect logic whenever timeRemaining changes
 
-  // --- Handlers ---
-  const onclickHandler = ()=>{
-    handleReset();
-  }
+
   const handleReset = () => {
     // Stop any existing interval and reset the time
     clearInterval(intervalRef.current);

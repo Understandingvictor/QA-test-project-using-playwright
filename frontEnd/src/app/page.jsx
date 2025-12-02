@@ -350,7 +350,7 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                       <p className="text-italic dark:text-black lg:text-sm lg:mb-3">
                         {message.message} | {message.status}
                       </p>
-                       {isClicked && <CountdownTimer/>}
+                       {isClicked && !newVideoUrl.videoUrl && <CountdownTimer/>}
                       {
                         newVideoUrl.videoUrl && (
                           <div className="text-sm dark:text-black">
