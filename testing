@@ -40,3 +40,38 @@ export const ecommerceE2E = async (req, res, next) => {
 
   });
 };
+
+          <h1 className="text-center font-pop1 text-3xl ">
+            ILO IFEANYI VICTOR
+          </h1>
+
+
+          .join(" ")}
+          aria-label="Logo"
+          style={{
+            background: menuBg,
+            minHeight: "48px",
+            borderRadius: "9999px",
+          }}
+
+
+
+          <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                            Github Actions
+                          </button>
+                          <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                            Postman
+                          </button>
+                          <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                            Git and Github
+                          </button>
+                          <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                            Trello
+                          </button>
+                          <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                            VsCode
+                          </button>
+                          <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                            Chrome DevTools
+                          </button>
+          

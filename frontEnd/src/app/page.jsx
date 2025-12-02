@@ -1,19 +1,135 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 import Image from "next/image";
 import { ModeToggle } from "@/component/button";
 import callBackEnd from "@/lib/callBackEnd";
 import Spinner from "@/component/spinner";
 import CountdownTimer from "@/component/timer"
+import TextType from "@/component/typewriter";
+import { motion } from "motion/react";
+import { postCardAnimation, postCardstyle } from "@/motions/motion1.motions";
+import LogoLoop from "@/component/logoLoop";
+import {
+  SiReact,
+  SiNextdotjs,
+  SiTypescript,
+  SiTailwindcss,
+} from "react-icons/si";
+import { manualSkills, automationSkills } from "@/lib/skillsStorage";
+
+import BubbleMenu from '@/components/BubbleMenu'
+
+const items = [
+  {
+    label: "Who am i",
+    href: "#",
+    ariaLabel: "who am i",
+    rotation: -8,
+    hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
+  },
+  {
+    label: "Technical Skills",
+    href: "#skills",
+    ariaLabel: "skills",
+    rotation: 8,
+    hoverStyles: { bgColor: "#10b981", textColor: "#ffffff" },
+  },
+  {
+    label: "projects",
+    href: "#projects",
+    ariaLabel: "Projects",
+    rotation: 8,
+    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
+  },
+  {
+    label: "tools and tech",
+    href: "#tools",
+    ariaLabel: "tools",
+    rotation: 8,
+    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
+  },
+  {
+    label: " Download My CV (PDF)",
+    href: "#cv",
+    ariaLabel: "cv",
+    rotation: 8,
+    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
+  },
+
+  {
+    label: "contact",
+    href: "#contact",
+    ariaLabel: "Contact",
+    rotation: -8,
+    hoverStyles: { bgColor: "#8b5cf6", textColor: "#ffffff" },
+  },
+];
+
+
 
 const backEndUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 const socket = io.connect(backEndUrl); // all client connects to this backend
 
 //localStorage.setItem("socketId", `${socket.id}`);
-
+  const techLogos = [
+    { node: <SiReact />, title: "React", href: "https://react.dev" },
+    { node: <SiNextdotjs />, title: "Next.js", href: "https://nextjs.org" },
+    {
+      node: <SiTypescript />,
+      title: "TypeScript",
+      href: "https://www.typescriptlang.org",
+    },
+    {
+      node: <SiTailwindcss />,
+      title: "Tailwind CSS",
+      href: "https://tailwindcss.com",
+    },
+  ];
+  
 
 export default function Qa() {
+
+  function ScrollToSectionWithRef() {
+    const mySectionRef = useRef(null);
+
+    const scrollToSection = () => {
+      if (mySectionRef.current) {
+        mySectionRef.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    };
+  }
+  // Alternative with image sources
+  const imageLogos = [
+    {
+      src: "/postman.svg",
+      alt: "Company 1",
+      // href: "https://company1.com",
+    },
+    {
+      src: "/git.svg",
+      alt: "Company 2",
+      // href: "https://company2.com",
+    },
+    {
+      src: "/playwright.svg",
+      alt: "Company 3",
+      href: "https://company3.com",
+    },
+    {
+      src: "/trello.svg",
+      alt: "Company 3",
+      //href: "https://company3.com",
+    },
+    {
+      src: "/github.png",
+      alt: "Company 3",
+      //href: "https://company3.com",
+    },
+  ];
 
   const [videoUrl, setVideoUrl] = useState({
     status: "failed",
@@ -61,6 +177,7 @@ export default function Qa() {
       console.log(error.message, "something went wrong")
     }
   }
+  const [screenWitdth, setScreenWidth] = useState(null)
   // const setSocketId = () => {
   //   localStorage.setItem("socketId", `${socket.id}`);
   //   console.log(localStorage);
@@ -77,12 +194,14 @@ export default function Qa() {
       setIsClicked(false);
       setMessage({ status: "complete", message: "Test Passed" })
     });
-  }, [socket]);
+    setScreenWidth(window.innerWidth);
+    console.log(window.innerWidth, "is the width");
+  }, [socket, screenWitdth]);
   return (
     <>
       <main className="dark:bg-[url(/bgdarkmain.jpg)] bg-[url(/bgbg.svg)] p-2 bg-no-repeat bg-cover">
         <header className=" ">
-          <div className=" flex justify-end mr-5 mt-3 fixed right-0">
+          <div className=" flex justify-end mr-5 mt-1 fixed right-0">
             <ModeToggle />
           </div>
           <Image
@@ -93,10 +212,48 @@ export default function Qa() {
             className="my-5 mx-3"
           />
         </header>
-        <div className=" hover:border-[#1A53A0]  hover:shadow-[#1A53A0] hover:shadow-2xl dark:bg-transparent  dark:border-none  dark:border-[#1A53A0] dark:shadow-[#1A53A0]  dark:shadow-sm  bg-[#1A53A0] md:p-4 lg:rounded-none shadow-[#1A53A0] shadow-sm text-white my-0.5 max-w-[70%] lg:max-w-[50%] rounded-sm">
-          <h1 className="text-center font-pop1 text-3xl ">
-            ILO IFEANYI VICTOR
-          </h1>
+        <div className=""></div>
+
+        <div className="flex items-center    justify-items-end">
+          <div className=" hover:border-[#1A53A0]  hover:shadow-[#1A53A0] hover:shadow-2xl dark:bg-transparent  dark:border-none  dark:border-[#1A53A0] dark:shadow-[#1A53A0]  dark:shadow-sm  bg-[#1A53A0] md:p-4 lg:rounded-none shadow-[#1A53A0] shadow-sm text-white my-0.5 max-w-[70%] lg:max-w-[50%] rounded-sm">
+            <TextType
+              text={["ILO IFEANYI VICTOR"]}
+              typingSpeed={75}
+              pauseDuration={1500}
+              showCursor={false}
+              loop={false}
+              cursorClassName="hidden"
+              className="text-center p-1   font-pop1 text-2xl md:text-5xl ml-4"
+            />
+            <br />
+            <TextType
+              text={[
+                "I AM A QUALITY ASSURANCE ENGINEER",
+                "i make sure you ship quality product",
+                "when i am not testing products, am playing piano",
+              ]}
+              typingSpeed={75}
+              pauseDuration={1500}
+              showCursor={true}
+              cursorCharacter="|"
+              initialDelay={2000}
+              className="text-center font-pop2 text-xs lg:text-sm ml-4"
+            />
+          </div>
+          <div className="">
+            <BubbleMenu
+              logo={""}
+              onMenuClick={(open) => false}
+              items={items}
+              menuAriaLabel="Toggle navigation"
+              menuBg="#ffffff"
+              menuContentColor="#111111"
+              useFixedPosition={true}
+              animationEase="back.out(1.5)"
+              animationDuration={0.5}
+              staggerDelay={0.12}
+            />
+          </div>
         </div>
         <div className="flex justify-center">
           <section className="mx-2 lg:flex lg:flex-col lg:max-w-[80%] justify-center">
@@ -127,19 +284,41 @@ export default function Qa() {
                   className="md:flex-1 dark:bg-transparent dark:border-none p-2
 dark:shadow-sm dark:shadow-[#1A53A0]  dark:border-2  dark:border-[#1A53A0]  shadow md:shadow-lg md:p-4 md:rounded-sm bg-white opacity-85"
                 >
-                  <p className="text-xs dark:text-[#E8E8E8] md:text-sm font-pop2  text-justify">
+                  <motion.p
+                    variants={postCardAnimation}
+                    whileHover="whileHover"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="text-xs lg:leading-loose dark:text-[#E8E8E8] md:text-sm font-pop2 text-justify"
+                  >
+                    {" "}
+                    I am a highly motivated QA Specialist with hands-on
+                    experience driving software quality within Agile/Scrum
+                    environments. My expertise covers the full SDLC (Software
+                    Development Lifecycle), specializing in the design and
+                    execution of Manual and Exploratory Testing. I am proficient
+                    in Test Documentation, systematic Defect Management
+                    (JIRA/TRELLO), and validating RESTful APIs (Postman). I have
+                    practical experience implementing Test Automation using
+                    Playwright to accelerate testing cycles and ensure
+                    continuous quality delivery. I ensure product integrity
+                    through rigorous testing and robust Bug Reporting, focused
+                    on delivering reliable, user-centric software solutions.
+                  </motion.p>
+                  {/*  <p className="text-xs dark:text-[#E8E8E8] md:text-sm font-pop2  text-justify">
                     I am a QA Specialist with hands-on experience in{" "}
                     <span className="text-[#1A53A0] dark:text-white font-pop1">
                       manual testing, automation, test documentation, bug
                       reporting, and ensuring product quality
                     </span>{" "}
                     through structured and efficient testing processes.
-                  </p>
+                  </p>*/}
                 </div>
               </div>
             </section>
-            <section>
-              <div className="flex dark:bg-transparent dark:border-dashed gap-2 mt-6 md:border lg:border-dashed md:max-w-[50%] justify-center items-center">
+            <section id="tools">
+              <div className="flex dark:bg-transparent  dark:border-dashed gap-2 mt-6 md:border lg:border-dashed md:max-w-[50%] justify-center items-center">
                 <div className="flex-1 md:flex-2 w-1 md:max-w-[20%] ">
                   <Image
                     src="/pencil.png"
@@ -158,73 +337,407 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                   </h1>
                 </div>
               </div>
-              <div className="my-2">
-                <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
-                  PlayWright
-                </button>
-                <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
-                  Github Actions
-                </button>
-                <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
-                  Postman
-                </button>
-                <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
-                  Git and Github
-                </button>
-                <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
-                  Trello
-                </button>
-                <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
-                  VsCode
-                </button>
-                <button className="border-[#1A53A0] border dark:opacity-85   shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
-                  Chrome DevTools
-                </button>
+
+              <div className="my-2 flex rounded-2xl gap-2 justify-center md:flex-row sm:flex-col flex-wrap">
+                <motion.div
+                  variants={postCardAnimation}
+                  whileHover="whileHover"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  className="border p-1 lg:max-w-[30%] md:max-w-[45%]   border-[#1A53A0] shadow-sm shadow-[#1A53A0]"
+                >
+                  <div className="flex">
+                    <Image
+                      src="/playwright.svg"
+                      width={24}
+                      height={24}
+                      alt="playwright icon"
+                    />
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                      PlayWright
+                    </button>
+                  </div>
+
+                  <br />
+                  <small className="italic text-[#1A53A0]">
+                    My primary tool for building scalable and reliable
+                    automation.
+                  </small>
+                  <div className="">
+                    <p className="font-pop2 leading-relaxed lg:text-sm text-xs text-justify ">
+                      <span className="font-pop1 ">E2E Automation:</span>
+                      Developed and maintained robust, cross-browser E2E test
+                      suites using Playwright (JS/TS) for critical user paths.
+                      <br /> <br />
+                      <span className="font-pop1 ">Stability:</span> Wrote
+                      resilient tests using native selectors and auto-waiting to
+                      minimize test flake and ensure high reliability.
+                      <br /> <br />
+                      <span className="font-pop1 ">Debugging:</span> Configured
+                      automated screenshots and video capture on failure,
+                      accelerating defect reproduction.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={postCardAnimation}
+                  whileHover="whileHover"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  className="border p-1 lg:max-w-[30%] md:max-w-[45%]  border-[#1A53A0] shadow-sm shadow-[#1A53A0]"
+                >
+                  <div className="flex">
+                    <Image
+                      src="/actions.png"
+                      width={24}
+                      height={24}
+                      alt="playwright icon"
+                    />
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                      GitHub Actions
+                    </button>
+                  </div>
+                  <br />
+                  <small className="italic text-[#1A53A0]">
+                    My experience in integrating QA into the Continuous
+                    Integration pipeline.
+                  </small>
+                  <div className="">
+                    <p className="leading-relaxed  font-pop2 lg:text-sm text-xs text-justify ">
+                      <span className="font-pop1 ">CI/CD Integration:</span>
+                      Integrated Playwright tests into GitHub Actions for
+                      automated execution upon PRs.
+                      <br />
+                      <span className="font-pop1 ">DevOps Workflow:</span>
+                      Created YAML workflows to enforce regression testing
+                      before deployment to staging.
+                      <br />
+                      <span className="font-pop1 ">Reporting:</span> Ensured
+                      immediate test status visibility within the GitHub
+                      environment.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={postCardAnimation}
+                  whileHover="whileHover"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                >
+                  <div className="flex">
+                    <Image
+                      src="/postman.svg"
+                      width={24}
+                      height={24}
+                      alt="playwright icon"
+                    />
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                      Postman
+                    </button>
+                  </div>
+                  <br />
+                  <small className="italic text-[#1A53A0]">
+                    My capability for validating backend business logic and data
+                    integrity.
+                  </small>
+                  <div className="">
+                    <p className="font-pop2 leading-relaxed  lg:text-sm text-xs text-justify ">
+                      <span className="font-pop1 ">API Validation:</span>
+                      <br />
+                      Executed RESTful API functional testing using Postman.
+                      Validated JSON schemas, status codes, and data integrity.
+                      <br />
+                      <span className="font-pop1 ">Scripting:</span> Used
+                      pre-request scripts for dynamic data handling and
+                      authentication (tokens) in multi-step API chains.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={postCardAnimation}
+                  whileHover="whileHover"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                >
+                  <div className="flex">
+                    <Image
+                      src="/git.svg"
+                      width={24}
+                      height={24}
+                      alt="playwright icon"
+                    />
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                      Git and Github
+                    </button>
+                  </div>
+                  <br />
+                  <small className="italic text-[#1A53A0]">
+                    My proficiency in using developer standards for
+                    collaborative code management.
+                  </small>
+                  <div className="">
+                    <p className="font-pop2 leading-relaxed  lg:text-sm text-xs   ">
+                      <span className="font-pop1 ">Version Control:</span>
+                      Practiced standard Git workflows (branching, merging) for
+                      managing test code and collaborated via Pull Requests
+                      (PRs) on GitHub.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={postCardAnimation}
+                  whileHover="whileHover"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                >
+                  <div className="flex">
+                    <Image
+                      src="/trello.svg"
+                      width={24}
+                      height={24}
+                      alt="playwright icon"
+                    />
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                      Trello
+                    </button>
+                  </div>
+                  <br />
+                  <small className="italic text-[#1A53A0]">
+                    My experience in applying Agile principles to the QA
+                    workflow.
+                  </small>
+                  <div className="">
+                    <p className="font-pop2 lg:text-sm leading-relaxed  text-xs   ">
+                      <span className="font-pop1 ">Defect Management:</span>
+                      Managed the Defect Lifecycle (tracking, prioritizing,
+                      verification) within Agile/Scrum sprints using Trello
+                      boards.
+                      <br />
+                      <span className="font-pop1 ">Workflow:</span> Visualized
+                      and tracked testing tasks and bug statuses for
+                      transparency and timely delivery.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={postCardAnimation}
+                  whileHover="whileHover"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                >
+                  <div className="flex">
+                    <Image
+                      src="/vscode.png"
+                      width={24}
+                      height={24}
+                      alt="playwright icon"
+                    />
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                      VsCode
+                    </button>
+                  </div>
+                  <br />
+                  <small className="italic text-[#1A53A0]">
+                    My skill set for debugging, analyzing, and writing efficient
+                    test code.
+                  </small>
+                  <div className="">
+                    <p className="font-pop2 leading-relaxed  lg:text-sm text-xs  ">
+                      <span className="font-pop1 ">VS Code Proficiency:</span>
+                      Highly proficient with VS Code for writing and debugging
+                      test scripts. Leveraged extensions and integrated
+                      debugging features for efficient test development and
+                      maintenance.
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={postCardAnimation}
+                  whileHover="whileHover"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false }}
+                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                >
+                  <div className="flex">
+                    <Image
+                      src="/devTool.png"
+                      width={24}
+                      height={24}
+                      alt="playwright icon"
+                    />
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                      Chrome DevTools
+                    </button>
+                  </div>
+                  <br />
+                  <small className="italic text-[#1A53A0]">
+                    My primary tool for monitoring requests and responses during
+                    tests
+                  </small>
+                  <div className="">
+                    <p className="font-pop2 leading-relaxed  lg:text-sm text-xs  ">
+                      <span className="font-pop1 ">Chrome DevTools:</span> Used
+                      the Network panel to monitor API requests and responses
+                      and the Console to diagnose front-end JavaScript errors
+                      during manual and exploratory testing. Created robust
+                      CSS/XPath selectors using the Elements panel for reliable
+                      automation locators.
+                    </p>
+                  </div>
+                </motion.div>
               </div>
             </section>
-            <section>
+
+            {/* Vertical loop with deceleration on hover 
+                <LogoLoop
+                  logos={techLogos}
+                  speed={80}
+                  direction="up"
+                  logoHeight={48}
+                  gap={40}
+                  hoverSpeed={20}
+                  fadeOut
+                />*/}
+
+            <motion.section
+              variants={postCardAnimation}
+              whileHover="whileHover"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mt-8 mb-8"
+            >
               <div
-                className=" bg-[#1A53A0] dark:bg-transparent  dark:border-2  dark:border-[#1A53A0] dark:border-none
-dark:shadow-sm dark:shadow-[#1A53A0] text-white md:mt-8  max-w-[70%] mt-8 "
+                className=" bg-[#1A53A0] dark:bg-transparent lg:p-3 dark:border-2  dark:border-[#1A53A0] dark:border-none
+                dark:shadow-sm dark:shadow-[#1A53A0] text-white md:mt-8  max-w-[70%] mt-8 "
               >
-                <h1 className="font-pop1 p-1 md:p-3 ">SKILLS OVERVIEW</h1>
+                <h1 id="skills" className="font-pop1 lg:text-4xl p-1 md:p-3 ">
+                  SKILLS OVERVIEW
+                </h1>
               </div>
-              <div className="flex shadow-sm mt-5 mb-5 md:gap-10 justify-center gap-4 p-1">
+              <small className="italic text-[#1A53A0]">
+                Agile/Scrum oriented
+              </small>
+              <div className="flex shadow-sm mt-5 mb-5 md:gap-10 p-3 justify-center gap-4">
                 <div className="max-w-[50%] border-r pr-2 md:pr-8">
                   <h2 className="font-pop1 text-sm md:text-lg  border-[#1A53A0] border-b-2">
                     MANUAL TESTING
                   </h2>
-                  <ul className="font-pop2 text-xs md:text-sm">
-                    <li className="dark:opacity-85">Test case design</li>
-                    <li className="dark:opacity-85">Regression testing</li>
-                    <li className="dark:opacity-85">Exploratory testing</li>
-                    <li className="dark:opacity-85">Functional testing</li>
-                    <li className="dark:opacity-85">Cross-browser testing</li>
-                    <li className="dark:opacity-85">API testing</li>
+                  <ul className="font-pop2 text-xs md:text-sm border-[#1A53A0] border shadow-sm p-2 ">
+                    {manualSkills.map((skill, index) => (
+                      <li
+                        key={index}
+                        className=" border-[#1A53A0] border m-2 shadow-sm p-2 dark:opacity-85"
+                      >
+                        {skill}
+                      </li>
+                    ))}
                   </ul>
                 </div>
                 <div className=" max-w-[50%]">
                   <h2 className="font-pop1 md:text-lg  text-sm border-[#1A53A0] border-b-2">
                     AUTOMATED TESTING
                   </h2>
-                  <ul className="font-pop2 text-xs md:text-sm">
-                    <li className="dark:opacity-85">Playwright</li>
-                    <li className="dark:opacity-85">
-                      CI/CD basics - GitHub actions
-                    </li>
-                    <li className="dark:opacity-85">
-                      javascript Automated scripts
-                    </li>
-                    <li className="dark:opacity-85">
-                      Python Automated scripts
-                    </li>
+                  <ul className="font-pop2 text-xs md:text-sm border-[#1A53A0] border shadow-sm p-2 ">
+                    {automationSkills.map((skill, index) => (
+                      <li
+                        key={index}
+                        className=" border-[#60fd04] border m-2 shadow-sm p-2 dark:opacity-85"
+                      >
+                        {skill}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>
-            </section>
+              {screenWitdth <= 425 && (
+                <center>
+                  <div className="w-full">
+                    {/* Basic horizontal loop */}
+                    <LogoLoop
+                      logos={imageLogos}
+                      speed={50}
+                      width={300}
+                      direction="left"
+                      logoHeight={20}
+                      gap={40}
+                      hoverSpeed={0}
+                      scaleOnHover
+                      fadeOut
+                      fadeOutColor="#ffffff"
+                      ariaLabel="Technology partners"
+                    />
+                  </div>
+                </center>
+              )}
 
-            <section
-              className="mt-8 font-pop2 md:bg-amber-100 "
+              {screenWitdth === 768 && (
+                <center>
+                  <div className="w-full">
+                    {/* Basic horizontal loop */}
+                    <LogoLoop
+                      logos={imageLogos}
+                      speed={50}
+                      width={600}
+                      direction="left"
+                      logoHeight={20}
+                      gap={40}
+                      hoverSpeed={0}
+                      scaleOnHover
+                      fadeOut
+                      fadeOutColor="#ffffff"
+                      ariaLabel="Technology partners"
+                    />
+                  </div>
+                </center>
+              )}
+
+              {screenWitdth > 768 && (
+                <center>
+                  <div className="w-full">
+                    {/* Basic horizontal loop */}
+                    <LogoLoop
+                      logos={imageLogos}
+                      speed={50}
+                      direction="left"
+                      logoHeight={40}
+                      gap={40}
+                      hoverSpeed={0}
+                      scaleOnHover
+                      fadeOut
+                      fadeOutColor="#ffffff"
+                      ariaLabel="Technology partners"
+                      className="max-w-full"
+                    />
+                  </div>
+                </center>
+              )}
+            </motion.section>
+
+            <motion.section
+              variants={postCardAnimation}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              id="projects"
+              className="mt-10 mb-8 font-pop2 md:bg-amber-100 "
               style={{
                 backgroundImage: "url(/notepad.png)",
                 backgroundRepeat: "no-repeat",
@@ -233,7 +746,7 @@ dark:shadow-sm dark:shadow-[#1A53A0] text-white md:mt-8  max-w-[70%] mt-8 "
             >
               <div
                 className="bg-[#1A53A0] dark:border-none
-dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:border-[#1A53A0] mb-5"
+                dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:border-[#1A53A0] mb-5"
               >
                 <h1 className="font-pop1 md:p-3 text-white text-center p-1">
                   TESTING PROJECTS
@@ -277,23 +790,6 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                           https://www.saucedemo.com
                         </a>
                       </p>
-                    </div>
-                    <div className="m-2">
-                      <span className="text-[#1A53A0] flex md:items-center md:gap-3  mt-2 mb-2">
-                        code ------
-                        <a
-                          href="https://github.com/Understandingvictor/QA-test-project-using-playwright/tree/main/backEnd"
-                          target="_blank"
-                        >
-                          <Image
-                            src="/code.png"
-                            width={24}
-                            height={24}
-                            className="md:w-[10%] lg:w-[3%]"
-                            alt="code"
-                          />
-                        </a>
-                      </span>
                     </div>
                   </div>
 
@@ -350,29 +846,45 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                       <p className="text-italic dark:text-black lg:text-sm lg:mb-3">
                         {message.message} | {message.status}
                       </p>
-                       {isClicked && !newVideoUrl.videoUrl && <CountdownTimer/>}
-                      {
-                        newVideoUrl.videoUrl && (
+
+                      {isClicked && !newVideoUrl.videoUrl && <CountdownTimer />}
+                      {newVideoUrl.videoUrl && (
+                        <>
                           <div className="text-sm dark:text-black">
-                        <div className="lg:mt-3 ">
-                          <div className="max-w-full border flex justify-center">
-                            <video controls width="600" height="auto">
-                              <source
-                                src={newVideoUrl.videoUrl}
-                                type="video/webm"
-                              />
-                            </video>
+                            <div className="lg:mt-3 ">
+                              <div className="max-w-full border flex justify-center">
+                                <video controls width="600" height="auto">
+                                  <source
+                                    src={newVideoUrl.videoUrl}
+                                    type="video/webm"
+                                  />
+                                </video>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                        )
-                      }
-                      
+                          <div className="m-2">
+                            <span className="text-[#1A53A0] flex md:items-center md:gap-3  mt-2 mb-2">
+                              code ------
+                              <a
+                                href="https://github.com/Understandingvictor/QA-test-project-using-playwright"
+                                target="_blank"
+                              >
+                                <Image
+                                  src="/code.png"
+                                  width={24}
+                                  height={24}
+                                  alt="code"
+                                />
+                              </a>
+                            </span>
+                          </div>
+                        </>
+                      )}
                     </center>
                   </div>
                 </div>
               </div>
-            </section>
+            </motion.section>
             <section>
               <center>
                 <a
@@ -385,26 +897,41 @@ dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:bo
                 </a>
               </center>
             </section>
-            <section>
-              <div className="mt-10 flex gap-5  ml-5 ">
+            <section id="contact">
+              <div className="mt-10  flex gap-5 items-center  ml-5 ">
+                <h3 className="font-pop2">CONTACT ME</h3>
                 <div className=" ">
-                  <Image src="/apple.png" width={34} height={24} alt="email" />
+                  <a href="mailto:ifeanyivictortech@gmail.com" role="button">
+                    <Image
+                      src="/apple.png"
+                      width={34}
+                      height={24}
+                      alt="email"
+                    />
+                  </a>
                 </div>
                 <div>
-                  <Image
-                    src="/whatsapp.png"
-                    width={34}
-                    height={24}
-                    alt="whatsapp"
-                  />
+                  <a href="https://wa.me/2438153835912" target="_blank">
+                    <Image
+                      src="/whatsapp.png"
+                      width={34}
+                      height={24}
+                      alt="whatsapp"
+                    />
+                  </a>
                 </div>
                 <div>
-                  <Image
-                    src="/github.png"
-                    width={34}
-                    height={24}
-                    alt="github"
-                  />
+                  <a
+                    target="_blank"
+                    href="https://github.com/Understandingvictor"
+                  >
+                    <Image
+                      src="/github.png"
+                      width={34}
+                      height={24}
+                      alt="github"
+                    />
+                  </a>
                 </div>
               </div>
             </section>
