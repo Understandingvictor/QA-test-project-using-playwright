@@ -3,7 +3,7 @@ import { easeOut, motion } from 'motion/react';
 
 export const postCardAnimation = {
   hidden: { 
-        scale: 0.5, 
+        scale: 0.9, 
         opacity: 0 ,
         filter: "blur(10px)", // start blurred
   },
