@@ -104,7 +104,7 @@ export const callbackE2E = async (req, res, next) => {
 
     //io.to(socketIdToEmit).emit("privateMessage", {message:"i succeeded"});
 
-    io.to(socketIdRetrieved).emit("privateMessage",{
+    io.to(socketIdToEmit).emit("privateMessage", {
       status: "complete",
       timestamp: new Date().toISOString(),
       videoUrl: videoUrl,
