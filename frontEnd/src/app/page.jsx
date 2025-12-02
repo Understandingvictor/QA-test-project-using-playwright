@@ -290,21 +290,28 @@ dark:shadow-sm dark:shadow-[#1A53A0]  dark:border-2  dark:border-[#1A53A0]  shad
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="text-xs lg:leading-loose dark:text-[#E8E8E8] md:text-sm font-pop2 text-justify"
+                    className="text-xs lg:leading-relaxed dark:text-[#E8E8E8] md:text-sm font-pop2 text-justify"
                   >
                     {" "}
-                    I am a highly motivated QA Specialist with hands-on
-                    experience driving software quality within Agile/Scrum
-                    environments. My expertise covers the full SDLC (Software
-                    Development Lifecycle), specializing in the design and
-                    execution of Manual and Exploratory Testing. I am proficient
-                    in Test Documentation, systematic Defect Management
-                    (JIRA/TRELLO), and validating RESTful APIs (Postman). I have
-                    practical experience implementing Test Automation using
-                    Playwright to accelerate testing cycles and ensure
-                    continuous quality delivery. I ensure product integrity
-                    through rigorous testing and robust Bug Reporting, focused
-                    on delivering reliable, user-centric software solutions.
+                    I am a passionate and highly motivated QA Specialist with
+                    hands-on experience driving software quality within
+                    Agile/Scrum environments. My expertise covers the{" "}
+                    <span className="text-[#1A53A0] font-pop1">
+                      full SDLC (Software Development Lifecycle)
+                    </span>
+                    , specializing practically in the design and execution of Manual and
+                    Automation Testing. I am proficient in{" "}
+                    <span className="text-[#1A53A0] font-pop1">
+                      {" "}
+                      Test Case Design, Test Documentation, systematic Defect
+                      Management (Jira/Trello), validating RESTful APIs
+                      (Postman/playwright), implementing regression, functional,
+                      end-to-end test etc
+                    </span><br></br>
+                      I ensure product
+                    integrity through rigorous testing and robust Bug Reporting,
+                    focused on delivering reliable, user-centric software
+                    solutions.
                   </motion.p>
                   {/*  <p className="text-xs dark:text-[#E8E8E8] md:text-sm font-pop2  text-justify">
                     I am a QA Specialist with hands-on experience in{" "}
@@ -338,7 +345,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                 </div>
               </div>
 
-              <div className="my-2 flex rounded-2xl gap-2 justify-center md:flex-row sm:flex-col flex-wrap">
+              <div className="my-2 flex rounded-2xl gap-2.5 justify-center md:flex-row sm:flex-col flex-wrap">
                 <motion.div
                   variants={postCardAnimation}
                   whileHover="whileHover"

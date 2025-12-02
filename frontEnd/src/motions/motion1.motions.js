@@ -8,7 +8,7 @@ export const postCardAnimation = {
         filter: "blur(10px)", // start blurred
   },
   visible: { 
-    scale: 0.9, 
+    scale: 1, 
     opacity: 1,
     filter: "blur(0px)", // clear it up
     transition: {
@@ -18,7 +18,7 @@ export const postCardAnimation = {
     }
   },
   whileHover: {
-    scale: 1,
+    scale: 1.04,
     transition: {
       duration: 0.3,
       ease: "easeInOut",
