@@ -32,6 +32,14 @@ const items = [
     hoverStyles: { bgColor: "#3b82f6", textColor: "#ffffff" },
   },
   {
+    label: "tools and tech",
+    href: "#tools",
+    ariaLabel: "tools",
+    rotation: 8,
+    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
+  },
+
+  {
     label: "Technical Skills",
     href: "#skills",
     ariaLabel: "skills",
@@ -42,13 +50,6 @@ const items = [
     label: "projects",
     href: "#projects",
     ariaLabel: "Projects",
-    rotation: 8,
-    hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
-  },
-  {
-    label: "tools and tech",
-    href: "#tools",
-    ariaLabel: "tools",
     rotation: 8,
     hoverStyles: { bgColor: "#f59e0b", textColor: "#ffffff" },
   },
@@ -326,7 +327,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                 </div>
               </div>
             </section>
-            <section id="tools" className=" mt-20 lg:mt-20">
+            <section id="tools" className=" mt-20 mb-10 lg:mt-20">
               <div className="flex dark:bg-transparent lg:mb-10 dark:border-dashed gap-2 mt-6 md:border lg:border-dashed md:max-w-[50%] justify-center items-center">
                 <div className="flex-1 lg:mb-5 md:flex-2 w-1 md:max-w-[20%] ">
                   <Image
@@ -631,15 +632,15 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="mt-8 mb-8"
+              className="mt-20 mb-8"
             >
               <div
-                className=" bg-[#1A53A0] lg:mt-20 mt-15  dark:bg-transparent lg:p-3 dark:border-2  dark:border-[#021733] dark:border-none
+                className=" bg-[#1A53A0]  lg:mt-20 mt-20  dark:bg-transparent lg:p-3 dark:border-2  dark:border-[#021733] dark:border-none
                 dark:shadow-sm dark:shadow-[#021733] text-white md:mt-8  max-w-[70%] "
               >
                 <h1
                   id="skills"
-                  className="font-pop1 text-2xl lg:text-4xl lg:pt-10 p-1 md:p-3 "
+                  className="font-pop1 mt-5 text-2xl lg:text-4xl lg:pt-10 p-1 md:p-3 "
                 >
                   SKILLS OVERVIEW
                 </h1>
@@ -652,7 +653,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   <h2 className="font-pop1 text-sm md:text-lg  border-[#021733]  border-b-2">
                     MANUAL TESTING
                   </h2>
-                  <ul className="font-pop2 text-xs md:text-sm border-[#021733]  border shadow-sm p-2 ">
+                  <ul className="font-pop2 text-xs md:text-sm border-[#021733]  border border-dashed shadow-sm p-2 ">
                     {manualSkills.map((skill, index) => (
                       <li
                         key={index}
@@ -667,7 +668,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   <h2 className="font-pop1 md:text-lg  text-sm border-[#1A53A0] border-b-2">
                     AUTOMATED TESTING
                   </h2>
-                  <ul className="font-pop2 text-xs md:text-sm border-[#1A53A0] border shadow-sm p-2 ">
+                  <ul className="font-pop2 text-xs md:text-sm border-[#1A53A0] border-dashed border shadow-sm p-2 ">
                     {automationSkills.map((skill, index) => (
                       <li
                         key={index}
@@ -897,7 +898,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                 </div>
               </div>
             </motion.section>
-            <section className="mt-20 mb-20">
+            <section id="cv" className="mt-20 mb-20">
               <center>
                 <a
                   href={`https://drive.google.com/uc?export=download&id=1VzkjbZvl8dmEVgKspisLoyCRwnnVgGgO`}
