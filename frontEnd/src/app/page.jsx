@@ -290,7 +290,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                 >
                   <motion.p
                     variants={postCardAnimation}
-                    whileHover="whileHover"
+                    
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
@@ -355,7 +355,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 lg:max-w-[30%] md:max-w-[45%] mt-10   border-[#021733] border-dashed shadow-sm shadow-[#021733]"
+                  className="border p-2 lg:max-w-[30%] md:max-w-[45%] mt-10   border-[#021733] border-dashed shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -397,7 +397,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 lg:max-w-[30%] md:max-w-[45%] mt-10    border-[#021733] border-dashed  shadow-sm shadow-[#021733]"
+                  className="border p-2 lg:max-w-[30%] md:max-w-[45%] mt-10    border-[#021733] border-dashed  shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -421,9 +421,11 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       Integrated Playwright tests into GitHub Actions for
                       automated execution upon PRs.
                       <br />
+                      <br />
                       <span className="font-pop1 ">DevOps Workflow:</span>
                       Created YAML workflows to enforce regression testing
                       before deployment to staging.
+                      <br />
                       <br />
                       <span className="font-pop1 ">Reporting:</span> Ensured
                       immediate test status visibility within the GitHub
@@ -438,7 +440,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
+                  className="border p-2 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -460,8 +462,10 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                     <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs text-justify ">
                       <span className="font-pop1 ">API Validation:</span>
                       <br />
+                      <br />
                       Executed RESTful API functional testing using Postman.
                       Validated JSON schemas, status codes, and data integrity.
+                      <br />
                       <br />
                       <span className="font-pop1 ">Scripting:</span> Used
                       pre-request scripts for dynamic data handling and
@@ -476,7 +480,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10 border-dashed    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
+                  className="border p-2 border-[#021733] mt-10 border-dashed    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -510,7 +514,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
+                  className="border p-2 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -535,6 +539,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       verification) within Agile/Scrum sprints using Trello
                       boards.
                       <br />
+                      <br />
                       <span className="font-pop1 ">Workflow:</span> Visualized
                       and tracked testing tasks and bug statuses for
                       transparency and timely delivery.
@@ -548,7 +553,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
+                  className="border p-2 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -583,7 +588,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10 border-dashed    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733] "
+                  className="border p-2 border-[#021733] mt-10 border-dashed    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733] "
                 >
                   <div className="flex">
                     <Image
