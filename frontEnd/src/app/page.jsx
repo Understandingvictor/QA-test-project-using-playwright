@@ -396,7 +396,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 lg:max-w-[30%] md:max-w-[45%] mt-10    border-[#021733]  shadow-sm shadow-[#021733]"
+                  className="border p-1 lg:max-w-[30%] md:max-w-[45%] mt-10    border-[#021733] border-dashed  shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -437,7 +437,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
+                  className="border p-1 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -475,7 +475,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
+                  className="border p-1 border-[#021733] mt-10 border-dashed    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -509,7 +509,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
+                  className="border p-1 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -547,7 +547,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
+                  className="border p-1 border-[#021733] mt-10  border-dashed   md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -582,7 +582,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733] "
+                  className="border p-1 border-[#021733] mt-10 border-dashed    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733] "
                 >
                   <div className="flex">
                     <Image
