@@ -1,6 +1,6 @@
 import express from "express"
 import {
-  testing,
+  wakeup,
   triggerE2E,
   callbackE2E,
   getLatestStatus,
@@ -30,8 +30,8 @@ const route = express.Router()
 
 /**
  * @swagger
- * /testing:
- *   post:
+ * /wakeup:
+ *   get:
  *     summary: test
  *     tags: [END2ENDTESTS]
  *     responses:
@@ -39,7 +39,7 @@ const route = express.Router()
  *         description: testing out things
  */
 
-route.post("/testing", testing);
+route.get("/wakeup", wakeup);
 
 
 /**

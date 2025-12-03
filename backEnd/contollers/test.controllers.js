@@ -124,22 +124,22 @@ export const getLatestStatus = (req, res, next) => {
   res.status(200).json(getLatestResults());
 };
 
-export const testing = async (req, res, next) => {
+export const wakeup = async (req, res, next) => {
   try {
-    const { socketIdRetrieved } = req.body
-    console.log(socketIdRetrieved, "is the socket retrieved");
-    //const files = videoPicsResult();
-    
-    const io = GETIO();
-    io.to(socketIdRetrieved).emit("privateMessage", {
-      status: "complete",
-      timestamp: new Date().toISOString(),
-      errorMessage: null,
-    });
-    console.log("entered here at the backend");
-    return res.status(200).json({ message: "i went successfully" });
+    // const { socketIdRetrieved } = req.body;
+    // console.log(socketIdRetrieved, "is the socket retrieved");
+    // //const files = videoPicsResult();
+
+    // const io = GETIO();
+    // io.to(socketIdRetrieved).emit("privateMessage", {
+    //   status: "complete",
+    //   timestamp: new Date().toISOString(),
+    //   errorMessage: null,
+    // });
+    // console.log("entered here at the backend");
+    return res.status(200).json({ message: "i am awake" });
   } catch (error) {
-    console.log(error.message, "is the error message")
-    next(error)
+    console.log(error.message, "is the error message");
+    next(error);
   }
-}
+};

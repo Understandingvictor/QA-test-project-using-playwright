@@ -17,8 +17,11 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 import { manualSkills, automationSkills } from "@/lib/skillsStorage";
+import awakeBackEnd from "@/lib/awakenBend";
 
-import BubbleMenu from '@/components/BubbleMenu'
+import BubbleMenu from '@/components/BubbleMenu';
+
+awakeBackEnd();
 
 const items = [
   {
@@ -215,7 +218,7 @@ export default function Qa() {
         <div className=""></div>
 
         <div className="flex items-center    justify-items-end">
-          <div className=" hover:border-[#1A53A0]  hover:shadow-[#1A53A0] hover:shadow-2xl dark:bg-transparent  dark:border-none  dark:border-[#1A53A0] dark:shadow-[#1A53A0]  dark:shadow-sm  bg-[#1A53A0] md:p-4 lg:rounded-none shadow-[#1A53A0] shadow-sm text-white my-0.5 max-w-[70%] lg:max-w-[50%] rounded-sm">
+          <div className=" hover:border-[#1A53A0] mb-20   hover:shadow-[#021733] hover:shadow-sm dark:bg-transparent  dark:border-none  dark:border-[#021733] dark:shadow-[#021733]  dark:shadow-sm  bg-[#1A53A0] md:p-4 lg:rounded-none shadow-[#021733] shadow-sm text-white my-0.5 max-w-[70%] lg:max-w-[50%] rounded-sm">
             <TextType
               text={["ILO IFEANYI VICTOR"]}
               typingSpeed={75}
@@ -258,13 +261,13 @@ export default function Qa() {
         <div className="flex justify-center">
           <section className="mx-2 lg:flex lg:flex-col lg:max-w-[80%] justify-center">
             <ul className="hidden  lg:flex dark:text-[#E8E8E8] gap-5 ml-8 mt-2 font-pop2">
-              <li className="border-[#1A53A0]  dark:opacity-85  border text-center flex items-center text-xs shadow-[#1A53A0] shadow-sm px-1 rounded-sm">
+              <li className="border-[#1A53A0]  dark:opacity-85  border text-center flex items-center text-xs shadow-[#021733] shadow-sm px-1 rounded-sm">
                 Quality Assurance
               </li>
-              <li className="border-[#1A53A0] dark:opacity-85  border text-center flex items-center text-xs shadow-[#1A53A0] shadow-sm px-1 rounded-sm">
+              <li className="border-[#1A53A0] dark:opacity-85  border text-center flex items-center text-xs shadow-[#021733] shadow-sm px-1 rounded-sm">
                 Automation
               </li>
-              <li className="border-[#1A53A0]  dark:opacity-85  border text-center flex items-center text-xs shadow-[#1A53A0] shadow-sm px-1 rounded-sm">
+              <li className="border-[#1A53A0]  dark:opacity-85  border text-center flex items-center text-xs shadow-[#021733] shadow-sm px-1 rounded-sm">
                 Manual
               </li>
             </ul>
@@ -281,8 +284,8 @@ export default function Qa() {
                   />
                 </div>
                 <div
-                  className="md:flex-1 dark:bg-transparent dark:border-none p-2
-dark:shadow-sm dark:shadow-[#1A53A0]  dark:border-2  dark:border-[#1A53A0]  shadow md:shadow-lg md:p-4 md:rounded-sm bg-white opacity-85"
+                  className="md:flex-1 mt-5 dark:bg-transparent dark:border-none p-2
+dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shadow md:shadow-lg md:p-4 md:rounded-sm bg-white opacity-85"
                 >
                   <motion.p
                     variants={postCardAnimation}
@@ -290,7 +293,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  dark:border-2  dark:border-[#1A53A0]  shad
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    className="text-xs lg:leading-relaxed dark:text-[#E8E8E8] md:text-sm font-pop2 text-justify"
+                    className="text-xs lg:leading-relaxed sm:text-left dark:text-[#E8E8E8] md:text-sm font-pop2 md:text-justify"
                   >
                     {" "}
                     I am a passionate and highly motivated QA Specialist with
@@ -299,19 +302,18 @@ dark:shadow-sm dark:shadow-[#1A53A0]  dark:border-2  dark:border-[#1A53A0]  shad
                     <span className="text-[#1A53A0] font-pop1">
                       full SDLC (Software Development Lifecycle)
                     </span>
-                    , specializing practically in the design and execution of Manual and
-                    Automation Testing. I am proficient in{" "}
+                    , specializing practically in the design and execution of
+                    Manual and Automation Testing. I am proficient in{" "}
                     <span className="text-[#1A53A0] font-pop1">
                       {" "}
                       Test Case Design, Test Documentation, systematic Defect
                       Management (Jira/Trello), validating RESTful APIs
                       (Postman/playwright), implementing regression, functional,
                       end-to-end test etc
-                    </span><br></br>
-                      I ensure product
-                    integrity through rigorous testing and robust Bug Reporting,
-                    focused on delivering reliable, user-centric software
-                    solutions.
+                    </span>
+                    <br></br>I ensure product integrity through rigorous testing
+                    and robust Bug Reporting, focused on delivering reliable,
+                    user-centric software solutions.
                   </motion.p>
                   {/*  <p className="text-xs dark:text-[#E8E8E8] md:text-sm font-pop2  text-justify">
                     I am a QA Specialist with hands-on experience in{" "}
@@ -324,9 +326,9 @@ dark:shadow-sm dark:shadow-[#1A53A0]  dark:border-2  dark:border-[#1A53A0]  shad
                 </div>
               </div>
             </section>
-            <section id="tools">
-              <div className="flex dark:bg-transparent  dark:border-dashed gap-2 mt-6 md:border lg:border-dashed md:max-w-[50%] justify-center items-center">
-                <div className="flex-1 md:flex-2 w-1 md:max-w-[20%] ">
+            <section id="tools" className=" mt-20 lg:mt-20">
+              <div className="flex dark:bg-transparent lg:mb-10 dark:border-dashed gap-2 mt-6 md:border lg:border-dashed md:max-w-[50%] justify-center items-center">
+                <div className="flex-1 lg:mb-5 md:flex-2 w-1 md:max-w-[20%] ">
                   <Image
                     src="/pencil.png"
                     width={24}
@@ -336,23 +338,23 @@ dark:shadow-sm dark:shadow-[#1A53A0]  dark:border-2  dark:border-[#1A53A0]  shad
                   />
                 </div>
                 <div
-                  className="bg-[#1A53A0] dark:bg-transparent  dark:border-2  dark:border-[#1A53A0] dark:border-none
-dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
+                  className="bg-[#1A53A0] mt-10 dark:bg-transparent  dark:border-2  dark:border-[#021733] dark:border-none
+                    dark:shadow-sm dark:shadow-[#021733]  md:p-3  flex-3 p-0.2"
                 >
-                  <h1 className="font-pop1 p-1 text-white text-right">
+                  <h1 className="font-pop1 p-1 sm:text-left text-2xl lg:text-4xl text-white md:text-right">
                     TOOLS AND TECHNOLOGIES
                   </h1>
                 </div>
               </div>
 
-              <div className="my-2 flex rounded-2xl gap-2.5 justify-center md:flex-row sm:flex-col flex-wrap">
+              <div className="my-2 flex rounded-2xl gap-3 justify-center md:flex-row sm:flex-col flex-wrap">
                 <motion.div
                   variants={postCardAnimation}
                   whileHover="whileHover"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 lg:max-w-[30%] md:max-w-[45%]   border-[#1A53A0] shadow-sm shadow-[#1A53A0]"
+                  className="border p-1 lg:max-w-[30%] md:max-w-[45%] mt-10   border-[#021733] border-dashed shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -361,7 +363,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
                       PlayWright
                     </button>
                   </div>
@@ -371,8 +373,8 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     My primary tool for building scalable and reliable
                     automation.
                   </small>
-                  <div className="">
-                    <p className="font-pop2 leading-relaxed lg:text-sm text-xs text-justify ">
+                  <div className="opacity-85">
+                    <p className="font-pop2 opacity-85 leading-relaxed lg:text-sm text-xs text-justify ">
                       <span className="font-pop1 ">E2E Automation:</span>
                       Developed and maintained robust, cross-browser E2E test
                       suites using Playwright (JS/TS) for critical user paths.
@@ -394,7 +396,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 lg:max-w-[30%] md:max-w-[45%]  border-[#1A53A0] shadow-sm shadow-[#1A53A0]"
+                  className="border p-1 lg:max-w-[30%] md:max-w-[45%] mt-10    border-[#021733]  shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -403,7 +405,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
                       GitHub Actions
                     </button>
                   </div>
@@ -412,8 +414,8 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     My experience in integrating QA into the Continuous
                     Integration pipeline.
                   </small>
-                  <div className="">
-                    <p className="leading-relaxed  font-pop2 lg:text-sm text-xs text-justify ">
+                  <div className="opacity-85">
+                    <p className="leading-relaxed opacity-85  font-pop2 lg:text-sm text-xs text-justify ">
                       <span className="font-pop1 ">CI/CD Integration:</span>
                       Integrated Playwright tests into GitHub Actions for
                       automated execution upon PRs.
@@ -435,7 +437,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -444,7 +446,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
                       Postman
                     </button>
                   </div>
@@ -454,7 +456,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     integrity.
                   </small>
                   <div className="">
-                    <p className="font-pop2 leading-relaxed  lg:text-sm text-xs text-justify ">
+                    <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs text-justify ">
                       <span className="font-pop1 ">API Validation:</span>
                       <br />
                       Executed RESTful API functional testing using Postman.
@@ -473,7 +475,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -482,7 +484,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
                       Git and Github
                     </button>
                   </div>
@@ -492,7 +494,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     collaborative code management.
                   </small>
                   <div className="">
-                    <p className="font-pop2 leading-relaxed  lg:text-sm text-xs   ">
+                    <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs   ">
                       <span className="font-pop1 ">Version Control:</span>
                       Practiced standard Git workflows (branching, merging) for
                       managing test code and collaborated via Pull Requests
@@ -507,7 +509,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -516,7 +518,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
                       Trello
                     </button>
                   </div>
@@ -526,7 +528,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     workflow.
                   </small>
                   <div className="">
-                    <p className="font-pop2 lg:text-sm leading-relaxed  text-xs   ">
+                    <p className="font-pop2 opacity-85 lg:text-sm leading-relaxed  text-xs   ">
                       <span className="font-pop1 ">Defect Management:</span>
                       Managed the Defect Lifecycle (tracking, prioritizing,
                       verification) within Agile/Scrum sprints using Trello
@@ -545,7 +547,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733]"
                 >
                   <div className="flex">
                     <Image
@@ -554,7 +556,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
                       VsCode
                     </button>
                   </div>
@@ -564,7 +566,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     test code.
                   </small>
                   <div className="">
-                    <p className="font-pop2 leading-relaxed  lg:text-sm text-xs  ">
+                    <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs  ">
                       <span className="font-pop1 ">VS Code Proficiency:</span>
                       Highly proficient with VS Code for writing and debugging
                       test scripts. Leveraged extensions and integrated
@@ -580,7 +582,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: false }}
-                  className="border p-1 border-[#1A53A0] md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#1A53A0]"
+                  className="border p-1 border-[#021733] mt-10    md:max-w-[45%]  lg:max-w-[30%] shadow-sm shadow-[#021733] "
                 >
                   <div className="flex">
                     <Image
@@ -589,7 +591,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#1A53A0] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
                       Chrome DevTools
                     </button>
                   </div>
@@ -599,7 +601,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     tests
                   </small>
                   <div className="">
-                    <p className="font-pop2 leading-relaxed  lg:text-sm text-xs  ">
+                    <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs  ">
                       <span className="font-pop1 ">Chrome DevTools:</span> Used
                       the Network panel to monitor API requests and responses
                       and the Console to diagnose front-end JavaScript errors
@@ -632,10 +634,13 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
               className="mt-8 mb-8"
             >
               <div
-                className=" bg-[#1A53A0] dark:bg-transparent lg:p-3 dark:border-2  dark:border-[#1A53A0] dark:border-none
-                dark:shadow-sm dark:shadow-[#1A53A0] text-white md:mt-8  max-w-[70%] mt-8 "
+                className=" bg-[#1A53A0] lg:mt-20 mt-15  dark:bg-transparent lg:p-3 dark:border-2  dark:border-[#021733] dark:border-none
+                dark:shadow-sm dark:shadow-[#021733] text-white md:mt-8  max-w-[70%] "
               >
-                <h1 id="skills" className="font-pop1 lg:text-4xl p-1 md:p-3 ">
+                <h1
+                  id="skills"
+                  className="font-pop1 text-2xl lg:text-4xl lg:pt-10 p-1 md:p-3 "
+                >
                   SKILLS OVERVIEW
                 </h1>
               </div>
@@ -644,14 +649,14 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
               </small>
               <div className="flex shadow-sm mt-5 mb-5 md:gap-10 p-3 justify-center gap-4">
                 <div className="max-w-[50%] border-r pr-2 md:pr-8">
-                  <h2 className="font-pop1 text-sm md:text-lg  border-[#1A53A0] border-b-2">
+                  <h2 className="font-pop1 text-sm md:text-lg  border-[#021733]  border-b-2">
                     MANUAL TESTING
                   </h2>
-                  <ul className="font-pop2 text-xs md:text-sm border-[#1A53A0] border shadow-sm p-2 ">
+                  <ul className="font-pop2 text-xs md:text-sm border-[#021733]  border shadow-sm p-2 ">
                     {manualSkills.map((skill, index) => (
                       <li
                         key={index}
-                        className=" border-[#1A53A0] border m-2 shadow-sm p-2 dark:opacity-85"
+                        className=" border-[#05162c] opacity-80 border m-2 shadow-sm p-2 dark:opacity-85"
                       >
                         {skill}
                       </li>
@@ -666,7 +671,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     {automationSkills.map((skill, index) => (
                       <li
                         key={index}
-                        className=" border-[#60fd04] border m-2 shadow-sm p-2 dark:opacity-85"
+                        className=" border-[#163a02] opacity-80 border m-2 shadow-sm p-2 dark:opacity-85"
                       >
                         {skill}
                       </li>
@@ -744,7 +749,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
               whileInView="visible"
               viewport={{ once: true }}
               id="projects"
-              className="mt-10 mb-8 font-pop2 md:bg-amber-100 "
+              className="mt-20 mb-8 font-pop2 md:bg-amber-100 "
               style={{
                 backgroundImage: "url(/notepad.png)",
                 backgroundRepeat: "no-repeat",
@@ -753,10 +758,10 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
             >
               <div
                 className="bg-[#1A53A0] dark:border-none
-                dark:shadow-sm dark:shadow-[#1A53A0] dark:bg-transparent  dark:border-2  dark:border-[#1A53A0] mb-5"
+                dark:shadow-sm dark:shadow-[#021733] dark:bg-transparent  dark:border-2  dark:border-[#021733] mb-5"
               >
-                <h1 className="font-pop1 md:p-3 text-white text-center p-1">
-                  TESTING PROJECTS
+                <h1 className="font-pop1 text-2xl md:p-3 lg:text-4xl text-white text-center p-1">
+                  PROJECTS
                 </h1>
               </div>
               <div className="flex justify-center">
@@ -812,7 +817,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     </div>
                     <div className="mt-15">
                       <center>
-                        <hr className="max-w-2/3 border-[#1A53A0] shadow-[#1A53A0] md:mt-8 shadow-7xl mt-5"></hr>
+                        <hr className="max-w-2/3 border-[#1A53A0] shadow-[#021733] md:mt-8 shadow-7xl mt-5"></hr>
                         <div className="flex flex-col items-center justify-center">
                           <Image
                             src="/demo.png"
@@ -829,7 +834,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                           </h1>
                         </div>
 
-                        <hr className="max-w-2/3 border-[#1A53A0] shadow-[#1A53A0] shadow-7xl mt-5"></hr>
+                        <hr className="max-w-2/3 border-[#1A53A0] shadow-[#021733] shadow-7xl mt-5"></hr>
                         <p className="mt-5 md:m-3 dark:text-black mb-5 md:text-sm text-xs">
                           click run the test button to trigger the test and wait
                           for the test to finish so you can see the result
@@ -840,7 +845,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                     <center>
                       <div
                         onClick={handleClick}
-                        className=" max-w-[50%] justify-center items-center gap-2 flex mt-10 mb-10 border-2 dark:text-black text-black border-[#1A53A0]  hover:text-white hover:shadow-2xl active:text-white active:bg-[#1A53A0]  focus:text-white  hover:bg-indigo-700 hover:shadow-[#1A53A0] p-3 rounded-sm "
+                        className=" max-w-[50%] justify-center items-center gap-2 flex mt-10 mb-10 border-2 dark:text-black text-black border-[#1A53A0]  hover:text-white hover:shadow-2xl active:text-white active:bg-[#1A53A0]  focus:text-white  hover:bg-indigo-700 hover:shadow-[#021733] p-3 rounded-sm "
                       >
                         <h1>RUN TEST</h1>
                         {isClicked && <Spinner />}
@@ -892,7 +897,7 @@ dark:shadow-sm dark:shadow-[#1A53A0]  md:p-3  flex-3 p-0.2"
                 </div>
               </div>
             </motion.section>
-            <section>
+            <section className="mt-20 mb-20">
               <center>
                 <a
                   href={`https://drive.google.com/uc?export=download&id=1VzkjbZvl8dmEVgKspisLoyCRwnnVgGgO`}
