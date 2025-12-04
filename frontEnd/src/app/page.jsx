@@ -162,14 +162,6 @@ export default function Qa() {
 
 
 
-  //simulation of a chat app
-  // const sendMessage = () => {
-  //   try {
-  //     socket.emit("handleClick", { outgoing });
-  //   } catch (error) {
-  //     console.log(error.message)
-  //   }
-  // }
   const handleClick = async() => {
     try {
       //socket.emit("handleClick", { message: "click is handled gracefully" });
@@ -218,7 +210,7 @@ export default function Qa() {
         </header>
         <div className=""></div>
 
-        <div className="flex items-center    justify-items-end">
+        <div className="flex items-center">
           <div className=" hover:border-[#1A53A0] mb-20   hover:shadow-[#021733] hover:shadow-sm dark:bg-transparent  dark:border-none  dark:border-[#021733] dark:shadow-[#021733]  dark:shadow-sm  bg-[#1A53A0] md:p-4 lg:rounded-none shadow-[#021733] shadow-sm text-white my-0.5 max-w-[70%] lg:max-w-[50%] rounded-sm">
             <TextType
               text={["ILO IFEANYI VICTOR"]}
@@ -288,15 +280,7 @@ export default function Qa() {
                   className="md:flex-1 mt-5 dark:bg-transparent dark:border-none p-2
 dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shadow md:shadow-lg md:p-4 md:rounded-sm bg-white opacity-85"
                 >
-                  <motion.p
-                    variants={postCardAnimation}
-                    
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="text-xs lg:leading-relaxed sm:text-left dark:text-[#E8E8E8] md:text-sm font-pop2 md:text-justify"
-                  >
-                    {" "}
+                  <div className="text-xs lg:leading-relaxed sm:text-left dark:text-[#E8E8E8] md:text-sm font-pop2 md:text-justify">
                     I am a passionate and highly motivated QA Specialist with
                     hands-on experience driving software quality within
                     Agile/Scrum environments. My expertise covers the{" "}
@@ -306,7 +290,6 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                     , specializing practically in the design and execution of
                     Manual and Automation Testing. I am proficient in{" "}
                     <span className="text-[#1A53A0] font-pop1">
-                      {" "}
                       Test Case Design, Test Documentation, systematic Defect
                       Management (Jira/Trello), validating RESTful APIs
                       (Postman/playwright), implementing regression, functional,
@@ -315,7 +298,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                     <br></br>I ensure product integrity through rigorous testing
                     and robust Bug Reporting, focused on delivering reliable,
                     user-centric software solutions.
-                  </motion.p>
+                  </div>
                   {/*  <p className="text-xs dark:text-[#E8E8E8] md:text-sm font-pop2  text-justify">
                     I am a QA Specialist with hands-on experience in{" "}
                     <span className="text-[#1A53A0] dark:text-white font-pop1">
@@ -364,16 +347,19 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] px-2 dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm rounded-lg text-xs font-pop2 mx-2">
                       PlayWright
                     </button>
                   </div>
 
                   <br />
-                  <small className="italic text-[#1A53A0]">
-                    My primary tool for building scalable and reliable
-                    automation.
-                  </small>
+                  <div className="mb-5">
+                    <small className="italic md:text-sm  text-[#1A53A0]">
+                      My primary tool for building scalable and reliable
+                      automation.
+                    </small>
+                  </div>
+
                   <div className="opacity-85">
                     <p className="font-pop2 opacity-85 leading-relaxed lg:text-sm text-xs text-justify ">
                       <span className="font-pop1 ">E2E Automation:</span>
@@ -406,15 +392,18 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-2 rounded-lg text-xs font-pop2 mx-2">
                       GitHub Actions
                     </button>
                   </div>
                   <br />
-                  <small className="italic text-[#1A53A0]">
-                    My experience in integrating QA into the Continuous
-                    Integration pipeline.
-                  </small>
+                  <div className="mb-5">
+                    <small className="italic md:text-sm text-[#1A53A0]">
+                      My experience in integrating QA into the Continuous
+                      Integration pipeline.
+                    </small>
+                  </div>
+
                   <div className="opacity-85">
                     <p className="leading-relaxed opacity-85  font-pop2 lg:text-sm text-xs text-justify ">
                       <span className="font-pop1 ">CI/CD Integration:</span>
@@ -449,15 +438,18 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-2 rounded-lg text-xs font-pop2 mx-2">
                       Postman
                     </button>
                   </div>
                   <br />
-                  <small className="italic text-[#1A53A0]">
-                    My capability for validating backend business logic and data
-                    integrity.
-                  </small>
+                  <div className="mb-5">
+                    <small className="italic md:text-sm text-[#1A53A0]">
+                      My capability for validating backend business logic and
+                      data integrity.
+                    </small>
+                  </div>
+
                   <div className="">
                     <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs text-justify ">
                       <span className="font-pop1 ">API Validation:</span>
@@ -489,15 +481,18 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-2 rounded-lg text-xs font-pop2 mx-2">
                       Git and Github
                     </button>
                   </div>
                   <br />
-                  <small className="italic text-[#1A53A0]">
-                    My proficiency in using developer standards for
-                    collaborative code management.
-                  </small>
+                  <div className="mb-5">
+                    <small className="italic md:text-sm text-[#1A53A0]">
+                      My proficiency in using developer standards for
+                      collaborative code management.
+                    </small>
+                  </div>
+
                   <div className="">
                     <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs   ">
                       <span className="font-pop1 ">Version Control:</span>
@@ -523,15 +518,18 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-2 rounded-lg text-xs font-pop2 mx-2">
                       Trello
                     </button>
                   </div>
                   <br />
-                  <small className="italic text-[#1A53A0]">
-                    My experience in applying Agile principles to the QA
-                    workflow.
-                  </small>
+                  <div className="mb-5">
+                    <small className="italic md:text-sm text-[#1A53A0]">
+                      My experience in applying Agile principles to the QA
+                      workflow.
+                    </small>
+                  </div>
+
                   <div className="">
                     <p className="font-pop2 opacity-85 lg:text-sm leading-relaxed  text-xs   ">
                       <span className="font-pop1 ">Defect Management:</span>
@@ -562,15 +560,18 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-2 rounded-lg text-xs font-pop2 mx-2">
                       VsCode
                     </button>
                   </div>
                   <br />
-                  <small className="italic text-[#1A53A0]">
-                    My skill set for debugging, analyzing, and writing efficient
-                    test code.
-                  </small>
+                  <div className="mb-5">
+                    <small className="italic md:text-sm text-[#1A53A0]">
+                      My skill set for debugging, analyzing, and writing
+                      efficient test code.
+                    </small>
+                  </div>
+
                   <div className="">
                     <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs  ">
                       <span className="font-pop1 ">VS Code Proficiency:</span>
@@ -597,15 +598,18 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       height={24}
                       alt="playwright icon"
                     />
-                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-0.5 rounded-lg text-xs font-pop2 mx-2">
+                    <button className="border-[#1A53A0] dark:text-[#E8E8E8] dark:opacity-85 border shadow-[#021733] shadow-sm px-2 rounded-lg text-xs font-pop2 mx-2">
                       Chrome DevTools
                     </button>
                   </div>
                   <br />
-                  <small className="italic text-[#1A53A0]">
-                    My primary tool for monitoring requests and responses during
-                    tests
-                  </small>
+                  <div className="mb-5">
+                    <small className="italic md:text-sm text-[#1A53A0]">
+                      My primary tool for monitoring requests and responses
+                      during tests
+                    </small>
+                  </div>
+
                   <div className="">
                     <p className="font-pop2 opacity-85 leading-relaxed  lg:text-sm text-xs  ">
                       <span className="font-pop1 ">Chrome DevTools:</span> Used
@@ -749,11 +753,7 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
               )}
             </motion.section>
 
-            <motion.section
-              variants={postCardAnimation}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
+            <section
               id="projects"
               className="mt-20 mb-8 font-pop2 md:bg-amber-100 "
               style={{
@@ -762,16 +762,26 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                 backgroundSize: "cover",
               }}
             >
-              <div
+              <motion.div
+                variants={postCardAnimation}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
                 className="bg-[#1A53A0] dark:border-none
                 dark:shadow-sm dark:shadow-[#021733] dark:bg-transparent  dark:border-2  dark:border-[#021733] mb-5"
               >
                 <h1 className="font-pop1 text-2xl md:p-3 lg:text-4xl text-white text-center p-1">
                   PROJECTS
                 </h1>
-              </div>
+              </motion.div>
               <div className="flex justify-center">
-                <div className="border bg-[#E8E8E9] md:rounded-none opacity-90 lg:m-3 md:bg-white md:border-none md:shadow-xl border-[#1A53A0] md:max-w-[70%] rounded-2xl p-1">
+                <motion.div
+                  variants={postCardAnimation}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="border bg-[#E8E8E9] md:rounded-none opacity-90 lg:m-3 md:bg-white md:border-none md:shadow-xl border-[#1A53A0] md:max-w-[70%] rounded-2xl p-1"
+                >
                   <div className="bg-black md:rounded-none text-white text-center rounded-2xl w-[30%] px-1 text-sm mb-5 mt-2.5">
                     <h1>PROJECT 1</h1>
                   </div>
@@ -900,9 +910,9 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                       )}
                     </center>
                   </div>
-                </div>
+                </motion.div>
               </div>
-            </motion.section>
+            </section>
             <section id="cv" className="mt-20 mb-20">
               <center>
                 <a

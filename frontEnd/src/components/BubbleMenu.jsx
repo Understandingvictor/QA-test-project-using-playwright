@@ -296,6 +296,18 @@ export default function BubbleMenu({
           ].join(" ")}
           aria-hidden={!isMenuOpen}
         >
+          {/* --- UPDATED BACKDROP DIV with optimal syntax --- */}
+          <div
+            className={[
+              "absolute inset-0",
+              "bg-black/50", // Combined black color with 50% opacity
+              "backdrop-blur-sm", // Applying the blur effect
+              "transition-opacity duration-300",
+              "pointer-events-auto",
+            ].join(" ")}
+            onClick={handleToggle} // Closes the menu when the backdrop is clicked
+          />
+          {/* --- END BACKDROP DIV --- */}
           <ul
             className={[
               "pill-list",
