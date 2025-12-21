@@ -269,8 +269,8 @@ export default function Qa() {
               <div className=" flex md:gap-5 flex-col md:flex-row-reverse justify-center items-center">
                 <div className="border-2 md:flex-1 dark:bg-transparent dark:border-none bg-[#1A53A0]  border-[#1A53A0] mb-3 md:rounded-full md:bg-[#1A53A0] md:shadow-2xl rounded-full md:flex md:justify-center w-[50%] overflow-hidden">
                   <Image
-                    src="/me.jpeg"
-                    width={200}
+                    src="/me.jpg"
+                    width={400}
                     height={40}
                     alt="gears"
                     className=" shadow-sm"
@@ -909,6 +909,176 @@ dark:shadow-sm dark:shadow-[#021733]  dark:border-2  dark:border-[#021733]  shad
                         </>
                       )}
                     </center>
+                  </div>
+                </motion.div>
+              </div>
+
+              <div className="flex justify-center mt-8">
+                <motion.div
+                  variants={postCardAnimation}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="border bg-[#E8E8E9] md:rounded-none opacity-90 lg:m-3 md:bg-white md:border-none md:shadow-xl border-[#1A53A0] md:max-w-[70%] rounded-2xl p-1"
+                >
+                  <div className="bg-black md:rounded-none text-white text-center rounded-2xl w-[30%] px-1 text-sm mb-5 mt-2.5">
+                    <h1>PROJECT 2</h1>
+                  </div>
+                  <div className="text-xs md:text-sm ">
+                    <div className="mb-8 dark:text-black">
+                      <p className="m-2 dark:text-black">
+                        <span className="font-pop1">PROJECT TITLE:</span>{" "}
+                        Automated API Test: Adjutor API (Lendsqr)
+                      </p>
+                      <p className="m-2">
+                        <span className="font-pop1">TOOLS USED:</span> Postman,
+                        Newman, Vscode
+                      </p>
+                      <p className="m-2">
+                        <span className="font-pop1">TEST CASES:</span>{" "}
+                        <a
+                          className="text-[#1A53A0] underline"
+                          href="https://www.postman.com/victor-2746354/workspace/victor/collection/45370484-3c161506-e753-4930-a840-0f7fa565d3e7?action=share&creator=45370484&active-environment=45370484-c53fc43e-3aff-4ba9-9065-c6a65ce75872"
+                        >
+                          postman collection Link to test cases
+                        </a>
+                      </p>
+                      <p className="m-2">
+                        <span className="font-pop1">WHAT I TESTED:</span> E2E
+                        detailed assertions for status codes, data types,
+                        business logic, and security (masking).
+                      </p>
+                      <p className="m-2">
+                        <span className="font-pop1">WEBSITE URL: </span>
+                        <a
+                          target="_blank"
+                          className="text-[#1A53A0] underline"
+                          href="https://api.adjutor.io/#e2cfd1d4-a638-4fd6-8e0a-2770fb2e7880"
+                        >
+                          api adjutor documentation
+                        </a>
+                      </p>
+                      <div className="flex items-center justify-center">
+                        <Image
+                          src="/testDashboard.png"
+                          width={500}
+                          height={44}
+                          alt="demo"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="shadow-sm mt-5">
+                    <div className="mt-15">
+                      <center>
+                        <hr className="max-w-2/3 border-[#1A53A0] shadow-[#021733] md:mt-8 shadow-7xl mt-5"></hr>
+                        <div className="flex flex-col items-center justify-center">
+                          <Image
+                            src="/demo.png"
+                            width={44}
+                            height={44}
+                            className="md:w-[10%] m-3 lg:w-[7%]"
+                            alt="demo"
+                          />
+                          <h1 className="mt-4 dark:text-black">
+                            Its demo time!!!
+                          </h1>
+                          <h1 className="dark:text-black">
+                            YOU CAN RUN A LIVE DEMO
+                          </h1>
+                        </div>
+
+                        <hr className="max-w-2/3 border-[#1A53A0] shadow-[#021733] shadow-7xl mt-5"></hr>
+                      </center>
+                      <h2 className="dark:text-black px-3 mb-3 font-pop1 leading-relaxed ">
+                        The project requires Node.js to be installed on your pc
+                        to manage dependencies and execute test commands.
+                        Download from{" "}
+                        <a
+                          target="_blank"
+                          className="underline text-red-500"
+                          href="https://nodejs.org/en/download/current"
+                        >
+                          here
+                        </a>
+                        <br></br>
+                      </h2>
+                      <br></br>
+                      <p className="dark:text-black px-3 mb-3 font-pop2 leading-relaxed ">
+                        The full, summarized results and granular assertion
+                        status for all endpoints can be viewed in the GUI report
+                        generated by the{" "}
+                        <span className="bg-blue-300 px-2 font-pop1">
+                          npm run test-report
+                        </span>{" "}
+                        command.
+                      </p>
+                      <h1 className="dark:text-black px-3 mt-20 text-xl mb-10 text-center font-pop1">
+                        RUN THIS TEST IN 3 STEPS
+                      </h1>
+                      <ul className="dark:text-black px-3  md:text-sm text-xs">
+                        <li className="mt-5 mb-5">
+                          <span className="font-pop1">
+                            {" "}
+                            Step 1: Clone the project to your local machine:
+                          </span>
+
+                          <br></br>
+                          <em>
+                            <b>git clone </b>
+                            <a
+                              target="_blank"
+                              className="underline text-red-500"
+                              href="https://github.com/Understandingvictor/AUTOMATED-TEST-TASK-BY-LENDSQR.git"
+                            >
+                              https://github.com/Understandingvictor/AUTOMATED-TEST-TASK-BY-LENDSQR.git
+                            </a>
+                            <br></br>
+                            <b>cd</b> AUTOMATED-TEST-TASK-BY-LENDSQR
+                          </em>
+                        </li>
+
+                        <li className="mt-5 mb-5">
+                          <span className="font-pop1">
+                            Step 2: Install Dependencies{" "}
+                          </span>
+                          <br></br>
+                          <em className="bg-blue-300 px-2">npm install</em>
+                        </li>
+
+                        <li className="mt-5 mb-5">
+                          <span className="font-pop1">Step 3: Run Tests</span>
+                          <br></br>
+                          <em className="bg-blue-300 px-2">
+                            npm run test-report
+                          </em>
+                          <small>
+                            <br></br>
+                            Runs all tests, generates the HTML report, and
+                            automatically opens the report in your default
+                            browser.
+                          </small>
+                        </li>
+                      </ul>
+
+                      <div className="mt-16 ml-3 mb-10 ">
+                        <span className="text-[#1A53A0] flex md:items-center md:gap-3  mt-2 mb-2">
+                          code ------
+                          <a
+                            href="https://github.com/Understandingvictor/AUTOMATED-TEST-TASK-BY-LENDSQR"
+                            target="_blank"
+                          >
+                            <Image
+                              src="/code.png"
+                              width={24}
+                              height={24}
+                              alt="code"
+                            />
+                          </a>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               </div>
